@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Altamira Drones — Soluciones profesionales con drones para ciudad, campo e innovacion</title>
+  <meta name="description" content="Altamira Drones desarrolla servicios aereos avanzados para entornos urbanos, rurales, agricolas y ganaderos. Inspeccion tecnica, fotogrametria, agricultura de precision e I+D+i.">
+  <meta property="og:title" content="Altamira Drones — Soluciones con drones para ciudad, campo e innovacion">
+  <meta property="og:description" content="Servicios aereos avanzados para inspeccion, fotogrametria, agricultura, ganaderia e innovacion aplicada.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://altamiradrones.com/es/">
+  <link rel="alternate" hreflang="en" href="https://altamiradrones.com/">
+  <link rel="alternate" hreflang="es" href="https://altamiradrones.com/es/">
+  <link rel="alternate" hreflang="x-default" href="https://altamiradrones.com/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9992;</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { 50:'#ecfeff', 100:'#cffafe', 200:'#a5f3fc', 300:'#67e8f9', 400:'#22d3ee', 500:'#06b6d4', 600:'#0891b2', 700:'#0e7490', 800:'#155e75', 900:'#164e63' },
+            electric: { 400:'#60a5fa', 500:'#3b82f6', 600:'#2563eb' },
+            agri: { 400:'#4ade80', 500:'#22c55e', 600:'#16a34a' },
+            dark: { 800:'#0a0f1a', 900:'#060a12', 950:'#030508' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background: #060a12; overflow-x: hidden; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+    .grid-overlay {
+      background-image:
+        linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6,182,212,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .glow-line { background: linear-gradient(90deg, transparent, rgba(6,182,212,0.3), transparent); height: 1px; }
+    .fade-up {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    @keyframes float-slow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+    @keyframes float-med { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-15px) rotate(3deg)} }
+    .float-slow { animation: float-slow 8s ease-in-out infinite; }
+    .float-med { animation: float-med 6s ease-in-out infinite; }
+    .text-gradient {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6, #22c55e);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #22d3ee, #06b6d4);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .service-card {
+      border: 1px solid rgba(6,182,212,0.1);
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .service-card:hover {
+      border-color: rgba(6,182,212,0.3); transform: translateY(-4px);
+      box-shadow: 0 20px 60px -15px rgba(6,182,212,0.1);
+    }
+    .sector-card {
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+      position: relative; overflow: hidden;
+    }
+    .sector-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:0; transition: opacity 0.4s;
+    }
+    .sector-card:hover::before { opacity:1; }
+    .sector-card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-2px); }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content:''; position:absolute; bottom:-4px; left:0; right:0;
+      height:2px; background:#06b6d4; transform:scaleX(0); transition:transform 0.3s;
+    }
+    .nav-link:hover::after, .nav-link.active::after { transform:scaleX(1); }
+    .mobile-menu-inner {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.25s ease;
+    }
+    .mobile-menu-inner.open { max-height: 400px; opacity: 1; }
+    @media (max-width: 1023px) {
+      .touch-target { min-height: 48px; display: flex; align-items: center; }
+      .touch-link { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; }
+    }
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:#060a12; }
+    ::-webkit-scrollbar-thumb { background:#164e63; border-radius:3px; }
+  </style>
+</head>
+<body class="font-sans text-slate-300 antialiased">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <a href="/es/" class="flex items-center space-x-2.5 group touch-link">
+          <div class="w-8 h-8 border border-cyan-500/30 rounded-lg flex items-center justify-center group-hover:border-cyan-400/60 transition-colors">
+            <svg class="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 3L4 9l8 6 8-6-8-6z" opacity="0.5"/>
+              <path d="M12 7L8 10l4 3 4-3-4-3z"/>
+              <circle cx="12" cy="10" r="1.5" fill="currentColor" stroke="none"/>
+              <line x1="5" y1="8" x2="2" y2="6" stroke-linecap="round"/>
+              <line x1="19" y1="8" x2="22" y2="6" stroke-linecap="round"/>
+              <line x1="5" y1="12" x2="2" y2="14" stroke-linecap="round"/>
+              <line x1="19" y1="12" x2="22" y2="14" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="text-lg font-semibold tracking-tight">
+            <span class="text-white">ALTAMIRA</span><span class="text-cyan-400">DRONES</span>
+          </span>
+        </a>
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="#urbano" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Urbano</a>
+          <a href="#agricultura" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Agricultura</a>
+          <a href="#innovacion" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">I+D+i</a>
+          <a href="#nosotros" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Nosotros</a>
+          <a href="#contacto" class="border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500/10 text-cyan-400 px-5 py-2 rounded-lg text-sm font-medium transition-all">Contacto</a>
+          <div class="flex items-center border-l border-white/10 pl-6 ml-2">
+            <a href="/" class="text-slate-500 hover:text-white text-xs font-medium transition-colors">EN</a>
+            <span class="text-slate-600 text-xs mx-1.5">/</span>
+            <span class="text-white text-xs font-semibold">ES</span>
+          </div>
+        </div>
+        <button id="mobile-btn" class="lg:hidden text-slate-400 p-3 -mr-2 hover:text-white transition-colors relative z-10" aria-label="Menu" aria-expanded="false">
+          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="lg:hidden">
+        <div id="mobile-menu-inner" class="mobile-menu-inner pb-6 border-t border-white/5 mt-2 pt-4">
+          <a href="#urbano" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Servicios urbanos</a>
+          <a href="#agricultura" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Agricultura y ganaderia</a>
+          <a href="#innovacion" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Innovacion / I+D+i</a>
+          <a href="#nosotros" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Nosotros</a>
+          <a href="#contacto" class="touch-target block mt-3 border border-cyan-500/40 text-cyan-400 px-5 py-3 rounded-lg text-sm font-medium text-center active:bg-cyan-500/10">Contacto</a>
+          <div class="flex items-center justify-center gap-4 mt-5 pt-4 border-t border-white/5">
+            <a href="/" class="text-slate-500 hover:text-white text-sm font-medium transition-colors px-3 py-2 touch-link">EN</a>
+            <span class="text-slate-600 text-sm">/</span>
+            <span class="text-white text-sm font-semibold px-3 py-2">ES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center overflow-hidden">
+    <div class="grid-overlay absolute inset-0"></div>
+    <div class="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] float-slow"></div>
+    <div class="absolute bottom-1/4 -left-32 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] float-med"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-cyan-500/[0.03] rounded-full"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-cyan-500/[0.05] rounded-full"></div>
+    <div class="absolute top-20 left-8 w-px h-32 bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent"></div>
+    <div class="absolute top-32 left-8 w-16 h-px bg-gradient-to-r from-cyan-500/20 to-transparent"></div>
+    <div class="absolute bottom-20 right-8 w-px h-32 bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="max-w-xl">
+          <div class="fade-up inline-flex items-center px-3 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-8">
+            <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-2.5 animate-pulse"></span>
+            <span class="text-cyan-300 text-xs font-medium tracking-wider uppercase">Madrid &middot; Europa &middot; USA</span>
+          </div>
+
+          <h1 class="fade-up text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-8 tracking-tight" style="transition-delay:0.1s">
+            Soluciones profesionales<br>
+            <span class="text-gradient">con drones para ciudad,<br>campo e innovacion</span>
+          </h1>
+
+          <p class="fade-up text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed font-light" style="transition-delay:0.2s">
+            En Altamira Drones desarrollamos servicios aereos avanzados para entornos urbanos, rurales, agricolas y ganaderos. Trabajamos en captura de datos, inspeccion tecnica, fotogrametria, analisis territorial y soluciones innovadoras con base en Madrid y ambito de actuacion en Europa y USA.
+          </p>
+
+          <div class="fade-up flex flex-col sm:flex-row gap-4" style="transition-delay:0.3s">
+            <a href="#urbano" class="group bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-cyan-500/20 text-center flex items-center justify-center gap-2">
+              Explorar servicios
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#contacto" class="border border-white/10 hover:border-white/25 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all text-center hover:bg-white/5">
+              Contactar
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero image -->
+        <div class="fade-up hidden lg:flex justify-center" style="transition-delay:0.4s">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10 rounded-3xl blur-2xl"></div>
+            <img src="../img/drone-hero.jpg" alt="Dron profesional en vuelo sobre campos verdes" class="relative w-[480px] h-[480px] object-cover rounded-2xl border border-white/5 shadow-2xl shadow-cyan-900/20 float-slow" loading="eager">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <span class="text-[10px] text-slate-600 uppercase tracking-widest">Scroll</span>
+      <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="relative py-24 lg:py-32">
+    <div class="glow-line w-full mb-24"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-up">
+          <p class="text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">Que hacemos</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
+            Operaciones con drones orientadas a desafios reales
+          </h2>
+        </div>
+        <div class="fade-up" style="transition-delay:0.15s">
+          <p class="text-slate-400 leading-relaxed mb-6">
+            Altamira Drones es una empresa con base en Madrid dedicada a servicios aereos avanzados para entornos urbanos y rurales. Combinamos operacion con drones, inteligencia visual, datos geoespaciales y desarrollo orientado a la innovacion para apoyar inspecciones tecnicas, fotogrametria, analisis agricola, gestion territorial y soluciones digitales de nueva generacion.
+          </p>
+          <p class="text-slate-400 leading-relaxed">
+            Nuestro trabajo va mas alla de la imagen aerea. Desarrollamos servicios orientados a datos e innovacion, disenados para apoyar la toma de decisiones, la eficiencia operativa y las aplicaciones sectoriales en arquitectura, infraestructura, agricultura y ganaderia.
+          </p>
+        </div>
+      </div>
+
+      <!-- Sector cards -->
+      <div class="grid md:grid-cols-3 gap-6 mt-20">
+        <a href="#urbano" class="sector-card rounded-2xl p-8 bg-white/[0.02] fade-up" style="--accent:#06b6d4">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3 class="text-white font-semibold text-lg mb-3">Entorno urbano</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Fotogrametria, inspecciones tecnicas, documentacion de obra, analisis visual de activos, apoyo a arquitectura e ingenieria y captacion aerea del entorno construido.</p>
+        </a>
+
+        <a href="#agricultura" class="sector-card rounded-2xl p-8 bg-white/[0.02] fade-up" style="--accent:#22c55e; transition-delay:0.1s">
+          <div class="w-10 h-10 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-white font-semibold text-lg mb-3">Agricultura y ganaderia</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Aplicacion aerea de productos, indices espectrales, mapeo de suelo, gestion de parcelas, prevencion y deteccion temprana, apoyo a agricultura de precision y soluciones para ganaderia.</p>
+        </a>
+
+        <a href="#innovacion" class="sector-card rounded-2xl p-8 bg-white/[0.02] fade-up" style="--accent:#3b82f6; transition-delay:0.2s">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="text-white font-semibold text-lg mb-3">Innovacion e I+D+i</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Orientacion firme hacia la I+D+i y el desarrollo de herramientas digitales para agricultura, ganaderia e inteligencia territorial.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS URBANOS -->
+  <section id="urbano" class="relative py-24 lg:py-32">
+    <div class="glow-line w-full mb-24"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">01 / Servicios urbanos</p>
+        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
+          Inteligencia aerea para el entorno construido
+        </h2>
+        <p class="fade-up text-slate-400 leading-relaxed text-lg" style="transition-delay:0.2s">
+          Altamira Drones ofrece servicios especializados para entornos urbanos, edificacion, infraestructuras y gestion tecnica del territorio. Utilizamos tecnologia dron para obtener informacion visual y geoespacial de alta calidad, optimizar inspecciones y mejorar la toma de decisiones.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Inspecciones tecnicas</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Inspecciones visuales y tecnicas de cubiertas, fachadas, estructuras, edificios singulares y activos de dificil acceso sin recurrir a medios auxiliares mas complejos.</p>
+        </div>
+
+        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.05s">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Fotogrametria y levantamiento aereo</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Captacion aerea para generacion de ortomosaicos georreferenciados, modelos 3D, documentacion visual y apoyo a levantamientos topograficos.</p>
+        </div>
+
+        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.1s">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Observacion de edificios y activos</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Observacion aerea dirigida de edificios, envolventes, superficies estructurales y condiciones de emplazamiento para revision tecnica y soporte operativo.</p>
+        </div>
+
+        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Documentacion de obra</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Registros visuales periodicos para seguimiento de obra, control de evolucion, comunicacion con equipos tecnicos y soporte documental para promotores y constructoras.</p>
+        </div>
+
+        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.05s">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Apoyo a arquitectura e ingenieria</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Servicios con drones disenados para apoyar a arquitectos, consultores tecnicos, ingenieros y planificadores con informacion visual y territorial fiable.</p>
+        </div>
+
+        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.1s">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Modelado y visualizacion</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Material util para analisis espacial, integracion en flujos GIS, apoyo a planificacion urbana y visualizacion tecnica de emplazamientos.</p>
+        </div>
+
+        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Mantenimiento preventivo</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Apoyo en revisiones visuales para mantenimiento preventivo, deteccion de incidencias superficiales y generacion de material tecnico para evaluacion posterior.</p>
+        </div>
+
+        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.05s">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Patrimonio y edificios complejos</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Inspeccion y documentacion de edificios historicos, fachadas complejas y activos donde el acceso fisico resulta costoso o delicado.</p>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-white/5 fade-up">
+        <p class="text-slate-500 text-sm max-w-2xl">Ayudamos a los sectores urbanos y tecnicos a trabajar con mayor visibilidad, acceso mas rapido a la informacion y documentacion aerea mas eficiente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGRICULTURA Y GANADERIA -->
+  <section id="agricultura" class="relative py-24 lg:py-32">
+    <div class="glow-line w-full mb-24"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <p class="fade-up text-xs font-medium text-green-400 tracking-widest uppercase mb-4">02 / Agricultura y ganaderia</p>
+        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
+          Sistemas aereos de precision para campo y ganaderia
+        </h2>
+        <p class="fade-up text-slate-400 leading-relaxed text-lg" style="transition-delay:0.2s">
+          Altamira Drones desarrolla soluciones orientadas a la mejora de la gestion agricola y ganadera mediante captacion aerea, analisis territorial, observacion multiespectral y desarrollo de herramientas innovadoras.
+        </p>
+      </div>
+
+      <!-- Agricultura -->
+      <div class="mb-16">
+        <h3 class="fade-up text-xl font-semibold text-white mb-8 flex items-center gap-3">
+          <span class="w-8 h-px bg-green-500/50"></span>
+          Agricultura
+        </h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1)">
+            <h4 class="text-white font-semibold mb-2">Aplicacion aerea de productos</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Servicios de aplicacion aerea dentro del marco operativo y normativo aplicable, orientados a mejorar eficiencia, cobertura y gestion tecnica de la explotacion.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.05s">
+            <h4 class="text-white font-semibold mb-2">Indices espectrales y analisis multiespectral</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Captacion y analisis de informacion multiespectral para evaluar el estado del cultivo. Indices NDVI, SAVI, TSAVI y otros indicadores para vigor vegetal y condiciones del cultivo.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.1s">
+            <h4 class="text-white font-semibold mb-2">Mapeo de suelo y analisis territorial</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Cartografia util para gestion de parcelas, organizacion del terreno, identificacion de zonas diferenciales, apoyo a muestreo y planificacion tecnica.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1)">
+            <h4 class="text-white font-semibold mb-2">Monitorizacion de cultivos</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Monitorizacion visual y basada en datos para identificar variabilidad, observar patrones de desarrollo y mejorar la conciencia situacional en parcelas agricolas.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.05s">
+            <h4 class="text-white font-semibold mb-2">Deteccion temprana de incidencias</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Revision aerea de condiciones que puedan indicar estres, desarrollo irregular o problemas que requieran seguimiento agronomico y validacion especifica.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.1s">
+            <h4 class="text-white font-semibold mb-2">Apoyo a riego y recursos</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Observacion aerea para localizar heterogeneidades, zonas con comportamiento anomalo y areas donde conviene revisar manejo, drenaje o estrategia de riego.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ganaderia -->
+      <div>
+        <h3 class="fade-up text-xl font-semibold text-white mb-8 flex items-center gap-3">
+          <span class="w-8 h-px bg-green-500/50"></span>
+          Ganaderia
+        </h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1)">
+            <h4 class="text-white font-semibold mb-2">Conteo y localizacion de animales</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Apoyo aereo para localizar animales, apoyar recuentos y mejorar la supervision en grandes extensiones o zonas de dificil acceso.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.05s">
+            <h4 class="text-white font-semibold mb-2">Supervision de parcelas y pastoreo</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Observacion aerea de uso de pastos, ocupacion del terreno, estado de cercados y patrones de distribucion en areas ganaderas.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.1s">
+            <h4 class="text-white font-semibold mb-2">Revision de infraestructuras</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Captacion aerea para revision visual de instalaciones, puntos de agua, comederos, cerramientos y otras infraestructuras de la explotacion.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1)">
+            <h4 class="text-white font-semibold mb-2">Observacion del comportamiento</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Apoyo aereo para observar patrones de movimiento, agrupaciones, dispersion y otras dinamicas visibles relevantes para la supervision en campo.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.05s">
+            <h4 class="text-white font-semibold mb-2">Monitorizacion de grandes areas</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Revision visual rapida de extensas areas rurales para una supervision operativa mas agil y una mejor conciencia situacional.</p>
+          </div>
+          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.1s">
+            <h4 class="text-white font-semibold mb-2">Gestion digital ganadera</h4>
+            <p class="text-slate-500 text-sm leading-relaxed">Flujos de trabajo con drones que se integran con sistemas digitales mas amplios para la gestion ganadera y territorial.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-white/5 fade-up">
+        <p class="text-slate-500 text-sm max-w-3xl">Nuestro enfoque combina capacidad aerea, comprension operativa e innovacion para apoyar una gestion agricola y ganadera mas eficiente, inteligente y escalable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INNOVACION / I+D+i -->
+  <section id="innovacion" class="relative py-24 lg:py-32">
+    <div class="glow-line w-full mb-24"></div>
+    <div class="absolute top-1/2 right-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] -translate-y-1/2"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="fade-up text-xs font-medium text-blue-400 tracking-widest uppercase mb-4">03 / Innovacion</p>
+          <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
+            I+D+i en el centro de la empresa
+          </h2>
+          <p class="fade-up text-slate-400 leading-relaxed text-lg mb-8" style="transition-delay:0.2s">
+            En Altamira Drones entendemos la tecnologia dron no solo como una herramienta de captacion de imagenes, sino como una plataforma para desarrollar soluciones avanzadas de analisis, gestion y apoyo a la toma de decisiones.
+          </p>
+          <p class="fade-up text-slate-400 leading-relaxed" style="transition-delay:0.25s">
+            Nuestro objetivo es crear valor mas alla de la imagen, combinando operacion con drones, datos aplicados, interpretacion tecnica y desarrollo digital en soluciones utiles para el mundo real. Esta mentalidad innovadora es especialmente relevante en sectores donde la eficiencia, la visibilidad en campo, la inteligencia territorial y la capacidad de respuesta operativa son criticas.
+          </p>
+        </div>
+
+        <div class="fade-up" style="transition-delay:0.3s">
+          <div class="border border-white/5 rounded-2xl p-8 bg-white/[0.01]">
+            <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Areas de I+D+i</h4>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-slate-400 text-sm">Agricultura de precision y herramientas de gestion</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-slate-400 text-sm">Soluciones de gestion y monitorizacion ganadera</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-slate-400 text-sm">Inteligencia de parcelas y digitalizacion del territorio</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-slate-400 text-sm">Flujos de trabajo de analisis multiespectral y datos espectrales</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-slate-400 text-sm">Interpretacion de datos aereos y analitica avanzada</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
+                <span class="text-slate-400 text-sm">Sistemas de soporte operativo basados en software</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-slate-600 text-xs mt-6 italic">Nuestra vision combina operacion aerea, tratamiento de datos y desarrollo de soluciones innovadoras que aporten valor tecnico real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="nosotros" class="relative py-24 lg:py-32">
+    <div class="glow-line w-full mb-24"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">04 / Sobre nosotros</p>
+        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8" style="transition-delay:0.1s">
+          Sobre Altamira Drones
+        </h2>
+        <div class="fade-up space-y-6 text-slate-400 leading-relaxed text-lg" style="transition-delay:0.2s">
+          <p>
+            Altamira Drones es una empresa con base en Madrid dedicada a los servicios profesionales con drones para entornos urbanos y rurales.
+          </p>
+          <p>
+            Trabajamos en proyectos vinculados a inspeccion tecnica, fotogrametria, observacion aerea, analisis territorial y aplicaciones para agricultura y ganaderia, con una propuesta orientada a la calidad tecnica, la innovacion y el desarrollo de soluciones adaptadas a cada necesidad.
+          </p>
+          <p>
+            La empresa apuesta por una vision moderna del sector dron, en la que la captacion de datos, la interpretacion tecnica y la innovacion aplicada forman parte de un mismo servicio.
+          </p>
+          <p>
+            Desde Madrid, operamos con una vocacion claramente internacional, apoyando proyectos, alianzas y colaboracion tecnica en toda Europa y USA.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-20 grid md:grid-cols-3 gap-6 fade-up">
+        <div class="text-center p-8 border border-white/5 rounded-xl bg-white/[0.01]">
+          <div class="text-3xl font-bold text-gradient-cyan mb-2">Madrid</div>
+          <p class="text-slate-500 text-sm">Sede central</p>
+        </div>
+        <div class="text-center p-8 border border-white/5 rounded-xl bg-white/[0.01]">
+          <div class="text-3xl font-bold text-gradient-cyan mb-2">Europa</div>
+          <p class="text-slate-500 text-sm">Area de operacion</p>
+        </div>
+        <div class="text-center p-8 border border-white/5 rounded-xl bg-white/[0.01]">
+          <div class="text-3xl font-bold text-gradient-cyan mb-2">USA</div>
+          <p class="text-slate-500 text-sm">Area de operacion</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="relative py-24 lg:py-32">
+    <div class="glow-line w-full mb-24"></div>
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-[120px]"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">05 / Contacto</p>
+        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
+          Contacta con nosotros
+        </h2>
+        <p class="fade-up text-slate-400 text-lg" style="transition-delay:0.2s">
+          Si desea mas informacion sobre nuestros servicios, colaboraciones o proyectos, puede contactar directamente con Altamira Drones.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up" style="transition-delay:0.3s">
+        <!-- Email -->
+        <div class="border border-white/5 rounded-xl p-6 bg-white/[0.01] hover:border-cyan-500/20 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Email</p>
+          <a href="mailto:altamiradronesrrss@gmail.com" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors break-all py-3 block touch-link">altamiradronesrrss@gmail.com</a>
+        </div>
+
+        <!-- Telefono -->
+        <div class="border border-white/5 rounded-xl p-6 bg-white/[0.01] hover:border-cyan-500/20 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Telefono / WhatsApp</p>
+          <a href="tel:+34638099208" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2 touch-link">+34 638 099 208</a>
+          <a href="tel:+34610485116" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2 touch-link">+34 610 485 116</a>
+          <a href="https://wa.me/34638099208" target="_blank" class="inline-flex items-center gap-1.5 text-green-400 text-xs mt-2 py-2 hover:text-green-300 active:text-green-200 transition-colors touch-link">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.34 0-4.512-.767-6.262-2.063l-.438-.333-3.04 1.019 1.019-3.04-.333-.438A9.959 9.959 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+
+        <!-- Direccion -->
+        <div class="border border-white/5 rounded-xl p-6 bg-white/[0.01] hover:border-cyan-500/20 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Direccion</p>
+          <a href="https://maps.google.com/?q=Calle+Hermosilla+48+Madrid+Spain" target="_blank" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2">Calle Hermosilla, 48<br>Piso 1, Puerta DC<br>28001 Madrid, Espana</a>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="border border-white/5 rounded-xl p-6 bg-white/[0.01] hover:border-cyan-500/20 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          </div>
+          <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Redes sociales</p>
+          <a href="https://instagram.com/altamira_drones" target="_blank" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2 touch-link">@altamira_drones</a>
+          <a href="https://youtube.com/@AltamiraDrones" target="_blank" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2 touch-link">YouTube</a>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center fade-up">
+        <p class="text-slate-600 text-sm">Idiomas de atencion: Espanol e ingles &middot; Ambito de actuacion: Europa y USA</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-6 h-6 border border-cyan-500/30 rounded flex items-center justify-center">
+            <svg class="w-3 h-3 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 3L4 9l8 6 8-6-8-6z" opacity="0.5"/><circle cx="12" cy="10" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <span class="text-sm font-medium"><span class="text-white">ALTAMIRA</span><span class="text-cyan-400">DRONES</span></span>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs text-slate-600">
+          <a href="#urbano" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Urbano</a>
+          <a href="#agricultura" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Agricultura</a>
+          <a href="#innovacion" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">I+D+i</a>
+          <a href="#nosotros" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Nosotros</a>
+          <a href="#contacto" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Contacto</a>
+        </div>
+
+        <p class="text-xs text-slate-700">&copy; 2026 Altamira Drones. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add('bg-dark-900/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+      } else {
+        navbar.classList.remove('bg-dark-900/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+      }
+    });
+
+    // Mobile menu (smooth transition)
+    const mobileBtn = document.getElementById('mobile-btn');
+    const mobileMenuInner = document.getElementById('mobile-menu-inner');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+    let menuOpen = false;
+    function toggleMenu(open) {
+      menuOpen = typeof open === 'boolean' ? open : !menuOpen;
+      mobileMenuInner.classList.toggle('open', menuOpen);
+      menuIconOpen.classList.toggle('hidden', menuOpen);
+      menuIconClose.classList.toggle('hidden', !menuOpen);
+      mobileBtn.setAttribute('aria-expanded', menuOpen);
+    }
+    mobileBtn.addEventListener('click', () => toggleMenu());
+    mobileMenuInner.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right').forEach(el => observer.observe(el));
+
+    // Active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => { if (window.scrollY >= section.offsetTop - 200) current = section.getAttribute('id'); });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
