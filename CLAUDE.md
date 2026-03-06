@@ -1,114 +1,101 @@
-# Altamira Drones — Site
+# Altamira Drones — Website
 
 ## What This Is
 
 Corporate website for **Altamira Drones** — a drone services company.
-Bilingual (EN/ES), static HTML, deployed to Cloudflare Pages.
+Bilingual (EN/ES), static HTML, hosted on Cloudflare Pages.
 
 - **Live URL**: https://altamiradrones.com
 - **ES version**: https://altamiradrones.com/es/
-- **Cloudflare Pages**: project name `altamiradrones`
-- **Pages domain**: altamiradrones.pages.dev
-- **Custom domains**: altamiradrones.com, www.altamiradrones.com
+- **Hosting**: Cloudflare Pages (auto-deploys when you push to GitHub)
 
 ## Structure
 
 ```
 altamiradrones/
-  index.html          # EN homepage (~766 lines, Tailwind CSS via CDN)
-  es/index.html       # ES homepage (~676 lines)
+  index.html          # English homepage
+  es/
+    index.html        # Spanish homepage
   img/
     drone-hero.jpg    # Hero image
     drone-hero.png    # Hero image (PNG variant)
-  add_dns.py          # One-off DNS record setup script (already run)
-  .wrangler/          # Wrangler local state (gitignored)
-  tmp/                # Temp artifacts (gitignored)
+  CLAUDE.md           # This file
+  .gitignore          # Git ignore rules
 ```
 
 ## Tech Stack
 
-- **HTML + Tailwind CSS** (via CDN `cdn.tailwindcss.com`)
+- **HTML + Tailwind CSS** (loaded from CDN — no install needed)
 - **Inter font** (Google Fonts)
-- **No build step** — static files, deploy the root directory directly
-- **No JavaScript framework** — vanilla HTML with Tailwind utility classes
-- **Responsive** — mobile-first design
+- **No build step** — these are plain HTML files, nothing to compile
+- **No frameworks** — vanilla HTML with Tailwind utility classes
+- **Responsive** — works on mobile and desktop
 
-## How to Deploy
+## How to Make Changes
 
-Uses channent's Cloudflare dome (`sol_do_cf.py`):
+### 1. Edit the files
 
-```bash
-# Deploy current directory to Cloudflare Pages
-cd ~/e/c/channent && python sol_do_cf.py --scenario=cf.deploy \
-  --cf_project=altamiradrones --cf_dir=~/e/c/altamiradrones
+Open `index.html` (English) or `es/index.html` (Spanish) in any text editor.
 
-# Or via unified router
-cd ~/e/c/channent && python sol_do_channent.py --scenario=cf.deploy \
-  --cf_project=altamiradrones --cf_dir=~/e/c/altamiradrones
-```
-
-Manual alternative (wrangler direct):
-```bash
-~/.npm-global/bin/wrangler pages deploy ~/e/c/altamiradrones --project-name=altamiradrones
-```
-
-## How to Edit Content
-
-Both HTML files are self-contained. Edit directly:
-
-- **EN**: `index.html` — English homepage
-- **ES**: `es/index.html` — Spanish homepage (manually translated, not auto-generated)
-
-After editing, deploy with the command above.
-
-### Key sections in the HTML
-
-The page is structured with sections (look for `<section` tags):
-- Hero with drone image
+The pages are organized in `<section>` blocks:
+- Hero banner with drone image
 - Services (urban inspection, agriculture, livestock, R&D)
 - About / capabilities
-- Contact
+- Contact information
 
-### Adding images
+### 2. Preview locally
 
-Place images in `img/`. Reference them as `img/filename.jpg` from `index.html`
-or `../img/filename.jpg` from `es/index.html`.
+Just open `index.html` in your browser — it works as a local file.
+No server needed.
 
-## DNS
+### 3. Deploy
 
-Managed via Cloudflare. Current records:
+Push to GitHub — Cloudflare auto-deploys within ~30 seconds:
+
+```bash
+git add -A
+git commit -m "describe your change"
+git push
+```
+
+That's it. The site updates automatically.
+
+## How to Add Images
+
+1. Put the image in the `img/` folder
+2. Reference it in HTML:
+   - From `index.html`: `<img src="img/photo.jpg">`
+   - From `es/index.html`: `<img src="../img/photo.jpg">` (note the `../`)
+3. Commit and push
+
+## Two Languages
+
+English and Spanish are **separate HTML files**. They are NOT auto-synced.
+If you change content in `index.html`, manually update `es/index.html` too.
+
+The language switcher links between them:
+- EN page links to `/es/` for Spanish
+- ES page links to `/` for English
+
+## DNS & Domain
+
+The domain `altamiradrones.com` is managed through Cloudflare.
+DNS changes are done in the Cloudflare dashboard (not in this repo).
+
+Current setup:
 - `altamiradrones.com` → Cloudflare Pages
-- `www.altamiradrones.com` → CNAME to altamiradrones.pages.dev
+- `www.altamiradrones.com` → redirects to main domain
 
-To manage DNS:
-```bash
-cd ~/e/c/channent && python sol_do_cf.py --scenario=cf.dns --cf_zone=altamiradrones.com
-cd ~/e/c/channent && python sol_do_cf.py --scenario=cf.dns.add --cf_zone=altamiradrones.com \
-  --cf_type=CNAME --cf_name=subdomain --cf_content=target.example.com
-```
+## Troubleshooting
 
-Note: wrangler's OAuth token lacks `dns_records` scope. The dome falls back to
-browser automation (AppleScript JS into Cloudflare dashboard) for DNS operations.
+**Site not updating after push?**
+- Cloudflare Pages typically deploys in 30 seconds
+- Check the Cloudflare Pages dashboard for build status
+- Try hard-refresh in browser (Ctrl+Shift+R / Cmd+Shift+R)
 
-## Cache
+**Tailwind styles not working locally?**
+- The page needs internet to load Tailwind from CDN
+- If offline, styles won't render (but the content is still there)
 
-To purge CDN cache after deploy (usually not needed — Pages auto-purges):
-```bash
-cd ~/e/c/channent && python sol_do_cf.py --scenario=cf.purge --cf_zone=altamiradrones.com
-```
-
-## Wrangler Auth
-
-Wrangler uses OAuth, token at `~/Library/Preferences/.wrangler/config/default.toml`.
-If expired:
-```bash
-cd ~/e/c/channent && python sol_do_cf.py --scenario=cf.login
-# or directly: ~/.npm-global/bin/wrangler login
-```
-
-## Important
-
-- **No build step** — deploy the directory as-is
-- **Wrangler path**: `~/.npm-global/bin/wrangler` (not in default subprocess PATH)
-- **Two languages are independent files** — changes to EN must be manually mirrored to ES
-- **Tailwind via CDN** — no local install, no purge step, works offline-first
+**Want to test on your phone?**
+- Push to GitHub, wait 30 seconds, open altamiradrones.com on your phone
