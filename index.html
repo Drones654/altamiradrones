@@ -186,6 +186,7 @@
           <a href="#urban" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Urban</a>
           <a href="#agriculture" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Agriculture</a>
           <a href="#innovation" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">R&D</a>
+          <a href="#projects" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Projects</a>
           <a href="#about" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">About</a>
           <a href="#contact" class="border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500/10 text-cyan-400 px-5 py-2 rounded-lg text-sm font-medium transition-all">Contact</a>
           <div class="flex items-center border-l border-white/10 pl-6 ml-2">
@@ -208,6 +209,7 @@
           <a href="#urban" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Urban Solutions</a>
           <a href="#agriculture" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Agriculture & Livestock</a>
           <a href="#innovation" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Innovation / R&D</a>
+          <a href="#projects" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Projects</a>
           <a href="#about" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">About</a>
           <a href="#contact" class="touch-target block mt-3 border border-cyan-500/40 text-cyan-400 px-5 py-3 rounded-lg text-sm font-medium text-center active:bg-cyan-500/10">Contact</a>
           <div class="flex items-center justify-center gap-4 mt-5 pt-4 border-t border-white/5">
@@ -573,12 +575,107 @@
     </div>
   </section>
 
+  <!-- ═══════════════════ PROJECTS ═══════════════════ -->
+  <section id="projects" class="relative py-24 lg:py-32">
+    <div class="glow-line w-full mb-24"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="max-w-3xl mb-16">
+        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">04 / Projects</p>
+        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
+          Work in the Field
+        </h2>
+        <p class="fade-up text-slate-400 text-lg leading-relaxed" style="transition-delay:0.2s">
+          Real projects, real data. Each job produces georeferenced deliverables — orthophotos, point clouds, 3D models and elevation models — ready for architecture, engineering and heritage applications.
+        </p>
+      </div>
+
+      <!-- Project card: Torre San Leonardo -->
+      <div class="fade-up sector-card rounded-2xl overflow-hidden bg-white/[0.02]" style="--accent:#06b6d4; transition-delay:0.3s">
+        <div class="grid lg:grid-cols-2 gap-0">
+
+          <!-- 3D Model viewer -->
+          <div class="relative min-h-[380px] lg:min-h-[480px] bg-black/30">
+            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+            <model-viewer
+              src="img/torre-san-leonardo-crop.glb"
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="500"
+              rotation-per-second="20deg"
+              environment-image="neutral"
+              shadow-intensity="1"
+              style="width:100%;height:100%;min-height:380px;background:transparent;"
+              alt="Torre San Leonardo 3D photogrammetry model">
+            </model-viewer>
+            <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs text-slate-400">
+              ↕ Drag to rotate · Scroll to zoom
+            </div>
+          </div>
+
+          <!-- Project info -->
+          <div class="p-8 lg:p-12 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <span class="text-xs font-medium text-cyan-400 tracking-widest uppercase border border-cyan-500/30 px-3 py-1 rounded-full">Heritage Documentation</span>
+                <span class="text-xs text-slate-600">March 2026</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-3">Torre San Leonardo</h3>
+              <p class="text-slate-500 text-sm mb-2">Hinojosa de Duero, Salamanca — Arribes del Duero Natural Park</p>
+              <p class="text-slate-400 text-sm leading-relaxed mt-4 mb-8">
+                Photogrammetric survey of a Romanesque bell gable from a medieval abandoned settlement. The structure is one of the last standing vestiges of the village of San Leonardo, deserted in the early 19th century. The dataset provides a permanent digital record for heritage authorities, architects and researchers.
+              </p>
+
+              <!-- Stats grid -->
+              <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                  <div class="text-cyan-400 font-bold text-xl">0.54 cm</div>
+                  <div class="text-slate-500 text-xs mt-1">Ground resolution (GSD)</div>
+                </div>
+                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                  <div class="text-cyan-400 font-bold text-xl">11.7 M</div>
+                  <div class="text-slate-500 text-xs mt-1">Point cloud density</div>
+                </div>
+                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                  <div class="text-cyan-400 font-bold text-xl">86</div>
+                  <div class="text-slate-500 text-xs mt-1">Images processed</div>
+                </div>
+                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                  <div class="text-cyan-400 font-bold text-xl">4.4 ha</div>
+                  <div class="text-slate-500 text-xs mt-1">Area covered</div>
+                </div>
+              </div>
+
+              <!-- Deliverables -->
+              <div class="flex flex-wrap gap-2 mb-8">
+                <span class="text-xs bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">Orthophoto</span>
+                <span class="text-xs bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">Point Cloud (LAZ)</span>
+                <span class="text-xs bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">3D Textured Model</span>
+                <span class="text-xs bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">DSM</span>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="flex flex-wrap gap-4">
+              <a href="#contact"
+                class="border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500/10 text-cyan-400 px-5 py-2.5 rounded-lg text-sm font-medium transition-all">
+                Request a Survey
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ═══════════════════ ABOUT ═══════════════════ -->
   <section id="about" class="relative py-24 lg:py-32">
     <div class="glow-line w-full mb-24"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center">
-        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">04 / About</p>
+        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">05 / About</p>
         <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8" style="transition-delay:0.1s">
           About Altamira Drones
         </h2>
@@ -623,7 +720,7 @@
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center mb-16">
-        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">05 / Contact</p>
+        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">06 / Contact</p>
         <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
           Get in touch
         </h2>
@@ -760,6 +857,7 @@
           <a href="#urban" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Urban</a>
           <a href="#agriculture" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Agriculture</a>
           <a href="#innovation" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">R&D</a>
+          <a href="#projects" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Projects</a>
           <a href="#about" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">About</a>
           <a href="#contact" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Contact</a>
         </div>
