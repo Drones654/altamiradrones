@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Vídeos del torneo — XV Campeonato de Golf de Arquitectos de Madrid | Altamira Drones</title>
+  <meta name="description" content="Descarga los vídeos aéreos del XV Campeonato de Golf de Arquitectos de Madrid, grabados el 21 de mayo de 2026 en la Ciudad Financiera del Banco Santander.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9992;</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { 50:'#ecfeff', 100:'#cffafe', 200:'#a5f3fc', 300:'#67e8f9', 400:'#22d3ee', 500:'#06b6d4', 600:'#0891b2', 700:'#0e7490', 800:'#155e75', 900:'#164e63' },
+            electric: { 400:'#60a5fa', 500:'#3b82f6', 600:'#2563eb' },
+            agri: { 400:'#4ade80', 500:'#22c55e', 600:'#16a34a' },
+            dark: { 800:'#0a0f1a', 900:'#060a12', 950:'#030508' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background: #060a12; overflow-x: hidden; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+
+    .grid-overlay {
+      background-image:
+        linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6,182,212,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .glow-cyan { box-shadow: 0 0 60px rgba(6,182,212,0.15), 0 0 120px rgba(6,182,212,0.05); }
+    .glow-line { background: linear-gradient(90deg, transparent, rgba(6,182,212,0.3), transparent); height: 1px; }
+
+    .fade-up {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .fade-in { opacity: 0; transition: opacity 1s ease; }
+    .fade-in.visible { opacity: 1; }
+
+    @keyframes float-slow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+    .float-slow { animation: float-slow 8s ease-in-out infinite; }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #22d3ee, #06b6d4);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-card {
+      border: 1px solid rgba(6,182,212,0.1);
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .service-card:hover {
+      border-color: rgba(6,182,212,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px -15px rgba(6,182,212,0.1);
+    }
+
+    /* Form input focus */
+    input:focus, textarea:focus {
+      outline: none;
+    }
+
+    /* Download button pulse */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(6,182,212,0.2); }
+      50% { box-shadow: 0 0 40px rgba(6,182,212,0.4); }
+    }
+    .btn-download {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #060a12; }
+    ::-webkit-scrollbar-thumb { background: #164e63; border-radius: 3px; }
+  </style>
+</head>
+<body class="font-sans text-slate-300 antialiased">
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 w-full z-50 bg-dark-900/90 backdrop-blur-xl border-b border-white/5 transition-all duration-500">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="https://altamiradrones.com" class="flex items-center space-x-2.5 group">
+          <span class="text-lg font-semibold tracking-tight">
+            <span class="text-white">ALTAMIRA</span><span class="text-cyan-400">DRONES</span>
+          </span>
+        </a>
+        <a href="https://altamiradrones.com" class="text-slate-500 hover:text-slate-300 text-sm transition-colors flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Volver a la web
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <div class="grid-overlay absolute inset-0"></div>
+    <div class="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] float-slow"></div>
+    <div class="absolute bottom-1/4 -left-32 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px]"></div>
+
+    <!-- Geometric accents -->
+    <div class="absolute top-24 left-8 w-px h-32 bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent"></div>
+    <div class="absolute top-36 left-8 w-16 h-px bg-gradient-to-r from-cyan-500/20 to-transparent"></div>
+    <div class="absolute bottom-20 right-8 w-px h-32 bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 w-full">
+      <div class="max-w-3xl">
+        <!-- Event badge -->
+        <div class="fade-up inline-flex items-center px-3 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-6">
+          <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-2.5 animate-pulse"></span>
+          <span class="text-cyan-300 text-xs font-medium tracking-wider uppercase">XV Campeonato de Golf — Arquitectos de Madrid &middot; 21 May. 2026</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="fade-up text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-6 tracking-tight" style="transition-delay:0.1s">
+          Los vídeos del torneo,<br>
+          <span class="text-gradient">grabados con dron</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="fade-up text-lg md:text-xl text-slate-400 max-w-2xl mb-10 leading-relaxed font-light" style="transition-delay:0.2s">
+          Grabamos el torneo en la Ciudad Financiera del Banco Santander con nuestro dron.
+          Deja tus datos y te damos acceso inmediato a todos los clips para que puedas usarlos en tu despacho o compartirlos con tu equipo.
+        </p>
+
+        <!-- Stats row -->
+        <div class="fade-up flex flex-wrap gap-6 mb-12" style="transition-delay:0.3s">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-bold text-lg leading-none">73</div>
+              <div class="text-slate-500 text-xs mt-0.5">clips de vídeo</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-bold text-lg leading-none">14.6 GB</div>
+              <div class="text-slate-500 text-xs mt-0.5">en Google Drive</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-bold text-lg leading-none">4K</div>
+              <div class="text-slate-500 text-xs mt-0.5">resolución</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-bold text-lg leading-none">Gratis</div>
+              <div class="text-slate-500 text-xs mt-0.5">sin coste</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="fade-up" style="transition-delay:0.4s">
+          <a href="#acceso" class="group bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-cyan-500/20 inline-flex items-center gap-2">
+            Acceder a los vídeos
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <span class="text-[10px] text-slate-600 uppercase tracking-widest">Bajar</span>
+      <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section id="acceso" class="relative py-24 lg:py-32">
+    <div class="glow-line w-full mb-24"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+        <!-- Left: context -->
+        <div>
+          <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">Descarga gratuita</p>
+          <h2 class="fade-up text-3xl md:text-4xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
+            Un clip para tu despacho,<br>un recuerdo del torneo
+          </h2>
+          <p class="fade-up text-slate-400 leading-relaxed mb-8" style="transition-delay:0.15s">
+            Grabamos el XV Campeonato de Golf de Arquitectos de Madrid de forma altruista para que tengáis material audiovisual del evento. Los vídeos son vuestros — úsalos en redes, en tu web o donde quieras.
+          </p>
+          <div class="fade-up space-y-4" style="transition-delay:0.2s">
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-2.5 h-2.5 text-cyan-400" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3"/></svg>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">73 clips en 4K grabados con DJI Mini 5 Pro</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-2.5 h-2.5 text-cyan-400" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3"/></svg>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">Carpeta compartida en Google Drive — descarga directa</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-2.5 h-2.5 text-cyan-400" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3"/></svg>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">Sin coste, sin compromiso</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-2.5 h-2.5 text-cyan-400" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3"/></svg>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed">Acceso inmediato tras rellenar el formulario</p>
+            </div>
+          </div>
+
+          <!-- Event info card -->
+          <div class="fade-up mt-10 border border-white/5 rounded-xl p-5 bg-white/[0.015]" style="transition-delay:0.25s">
+            <p class="text-xs text-slate-500 uppercase tracking-wider mb-3">Evento</p>
+            <p class="text-white font-semibold text-sm mb-1">XV Campeonato de Golf de Arquitectos de Madrid</p>
+            <p class="text-slate-500 text-sm">21 de mayo de 2026</p>
+            <p class="text-slate-500 text-sm">Campo de Golf — Ciudad Financiera Banco Santander</p>
+            <p class="text-slate-500 text-sm">Boadilla del Monte, Madrid</p>
+          </div>
+        </div>
+
+        <!-- Right: form card -->
+        <div class="fade-up" style="transition-delay:0.1s">
+          <!-- Form state -->
+          <div id="form-container" class="border border-white/5 rounded-2xl p-8 bg-white/[0.01] hover:border-cyan-500/10 transition-colors glow-cyan">
+            <h3 class="text-white font-semibold text-xl mb-1">Deja tus datos</h3>
+            <p class="text-slate-500 text-sm mb-6">Recibirás el enlace de descarga al instante.</p>
+
+            <form id="golf-form" class="space-y-4">
+              <!-- Formsubmit.co hidden fields -->
+              <input type="hidden" name="_subject" value="Nuevo acceso vídeos Golf Arquitectos">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+              <input type="hidden" name="evento" value="XV Campeonato Golf Arquitectos Madrid — 21 Mayo 2026">
+
+              <div>
+                <label class="block text-slate-500 text-xs uppercase tracking-wider mb-2">Nombre y apellidos *</label>
+                <input type="text" name="nombre" required placeholder="Tu nombre completo"
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-600 focus:border-cyan-500/50 focus:bg-white/[0.07] transition-colors">
+              </div>
+
+              <div>
+                <label class="block text-slate-500 text-xs uppercase tracking-wider mb-2">Email *</label>
+                <input type="email" name="email" required placeholder="tu@despacho.com"
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-600 focus:border-cyan-500/50 focus:bg-white/[0.07] transition-colors">
+              </div>
+
+              <div>
+                <label class="block text-slate-500 text-xs uppercase tracking-wider mb-2">Despacho / Empresa *</label>
+                <input type="text" name="despacho_empresa" required placeholder="Nombre de tu despacho o empresa"
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-600 focus:border-cyan-500/50 focus:bg-white/[0.07] transition-colors">
+              </div>
+
+              <p class="text-slate-600 text-xs pt-1">Tus datos se usan exclusivamente para darte acceso a los vídeos. No spam, nunca.</p>
+
+              <button type="submit" id="golf-submit"
+                class="w-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 hover:border-cyan-500/60 text-cyan-400 font-semibold py-3.5 px-6 rounded-lg text-sm transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed mt-2">
+                Acceder a los vídeos &rarr;
+              </button>
+
+              <div id="form-error" class="hidden text-center text-sm py-2 px-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400"></div>
+            </form>
+          </div>
+
+          <!-- Success state (hidden until form submitted) -->
+          <div id="success-container" class="hidden border border-cyan-500/20 rounded-2xl p-8 bg-cyan-500/[0.03] text-center">
+            <!-- Check icon -->
+            <div class="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mx-auto mb-6">
+              <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h3 class="text-white font-bold text-xl mb-2">Acceso concedido</h3>
+            <p class="text-slate-400 text-sm mb-8 leading-relaxed">Gracias por tu interes. Aqui tienes el enlace a la carpeta de Google Drive con los 73 clips del torneo.</p>
+
+            <a href="https://drive.google.com/drive/folders/1ZGwwRQ6jhGRLdFY4RXBWRWsRHgRpLo4q?usp=sharing"
+               target="_blank" rel="noopener"
+               class="btn-download inline-flex items-center gap-3 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-cyan-500/25 mb-6">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 2.18L1.5 11.02l3.11 5.38 5.12-8.84L6.62 2.18zm11.58 0l-3.11 5.38H22.5L17.38 2.18zM8.56 9.84l-3.11 5.38h6.22l3.11-5.38H8.56zm9.07 1.56l-3.11 5.38L11.41 22h6.22l3.11-5.38-3.11-5.22zm-7.02 5.38L8.56 22h6.22l2.05-3.55-6.22-.07z"/></svg>
+              Abrir carpeta en Google Drive
+            </a>
+
+            <p class="text-slate-600 text-xs">Si el enlace no abre, copia esta URL: <span class="text-slate-500 break-all select-all">drive.google.com/drive/folders/1ZGwwRQ6jhGRLdFY4RXBWRWsRHgRpLo4q</span></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ALTAMIRA -->
+  <section class="relative py-24 lg:py-32">
+    <div class="glow-line w-full mb-24"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">Quienes somos</p>
+        <h2 class="fade-up text-3xl md:text-4xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
+          Altamira Drones — drones para arquitectura e ingenieria
+        </h2>
+        <p class="fade-up text-slate-400 leading-relaxed text-lg" style="transition-delay:0.2s">
+          Somos una empresa madrillena especializada en servicios profesionales con dron para el entorno urbano y rural. Trabajamos con arquitectos, ingenierias y despachos tecnicos que necesitan informacion aerea de calidad.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="fade-up service-card rounded-xl p-7 bg-white/[0.02]">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Inspeccion tecnica</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Inspeccion aerea de edificios, fachadas, cubiertas y estructuras de dificil acceso. Documentacion tecnica y visual para arquitectos y ingenieros.</p>
+        </div>
+
+        <div class="fade-up service-card rounded-xl p-7 bg-white/[0.02]" style="transition-delay:0.08s">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Fotogrametria</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Ortofotografias, modelos 3D y nubes de puntos de edificios, solares y conjuntos patrimoniales. Precision centimetrica para proyectos tecnicos.</p>
+        </div>
+
+        <div class="fade-up service-card rounded-xl p-7 bg-white/[0.02]" style="transition-delay:0.16s">
+          <div class="text-cyan-400 mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-white font-semibold mb-2">Video y visualizacion</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Grabacion aerea para presentaciones, concursos, documentacion de obra y comunicacion de proyectos. Material de alta calidad para despachos.</p>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center fade-up">
+        <a href="https://altamiradrones.com" class="border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500/10 text-cyan-400 px-7 py-3 rounded-xl text-sm font-medium transition-all inline-flex items-center gap-2">
+          Ver todos nuestros servicios
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500">
+          <a href="mailto:altamiradronesrrss@gmail.com" class="hover:text-slate-300 transition-colors flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            altamiradronesrrss@gmail.com
+          </a>
+          <a href="https://wa.me/34638099208" target="_blank" class="hover:text-slate-300 transition-colors flex items-center gap-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.34 0-4.512-.767-6.262-2.063l-.438-.333-3.04 1.019 1.019-3.04-.333-.438A9.959 9.959 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            +34 638 099 208
+          </a>
+          <a href="https://instagram.com/altamira_drones" target="_blank" class="hover:text-slate-300 transition-colors">@altamira_drones</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="https://altamiradrones.com" class="flex items-center space-x-2">
+          <span class="text-sm font-medium"><span class="text-white">ALTAMIRA</span><span class="text-cyan-400">DRONES</span></span>
+        </a>
+        <p class="text-xs text-slate-700">&copy; 2026 Altamira Drones. Madrid, Espana.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
+
+    // Form submit
+    const form = document.getElementById('golf-form');
+    const submitBtn = document.getElementById('golf-submit');
+    const formError = document.getElementById('form-error');
+    const formContainer = document.getElementById('form-container');
+    const successContainer = document.getElementById('success-container');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled = true;
+      formError.classList.add('hidden');
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/altamiradronesrrss@gmail.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        const data = await response.json();
+        if (data.success === 'true' || data.success === true) {
+          formContainer.classList.add('hidden');
+          successContainer.classList.remove('hidden');
+          successContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error(data.message || 'Error desconocido');
+        }
+      } catch (err) {
+        formError.textContent = 'Algo ha fallado. Intentalo de nuevo o escríbenos a altamiradronesrrss@gmail.com';
+        formError.classList.remove('hidden');
+        submitBtn.textContent = 'Acceder a los vídeos →';
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
