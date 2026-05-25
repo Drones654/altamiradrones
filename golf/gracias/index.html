@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso concedido — Vídeos Golf Arquitectos | Altamira Drones</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9992;</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { 500:'#06b6d4', 600:'#0891b2' },
+            dark: { 900:'#060a12' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background: #060a12; }
+    .grid-overlay {
+      background-image:
+        linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6,182,212,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(6,182,212,0.2); }
+      50% { box-shadow: 0 0 50px rgba(6,182,212,0.45); }
+    }
+    .btn-download { animation: pulse-glow 3s ease-in-out infinite; }
+    @keyframes check-in {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .check-anim { animation: check-in 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+  </style>
+</head>
+<body class="font-sans text-slate-300 antialiased min-h-screen flex flex-col">
+
+  <!-- Nav -->
+  <nav class="w-full border-b border-white/5 py-4 px-6">
+    <a href="https://altamiradrones.com" class="flex items-center space-x-2 w-fit">
+      <span class="text-base font-semibold"><span class="text-white">ALTAMIRA</span><span class="text-cyan-400">DRONES</span></span>
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <main class="relative flex-1 flex items-center justify-center px-4 py-16">
+    <div class="grid-overlay absolute inset-0"></div>
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-cyan-500/5 rounded-full blur-[100px]"></div>
+
+    <div class="relative max-w-lg w-full text-center">
+      <!-- Check icon -->
+      <div class="check-anim w-20 h-20 rounded-full bg-cyan-500/10 border-2 border-cyan-500/30 flex items-center justify-center mx-auto mb-8">
+        <svg class="w-9 h-9 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-bold text-white mb-3">Acceso concedido</h1>
+      <p class="text-slate-400 text-lg mb-10 leading-relaxed">
+        Aqui tienes los 73 clips del torneo. Puedes descargar los que quieras directamente desde Google Drive.
+      </p>
+
+      <!-- Drive button -->
+      <a href="https://drive.google.com/drive/folders/1ZGwwRQ6jhGRLdFY4RXBWRWsRHgRpLo4q?usp=sharing"
+         target="_blank" rel="noopener"
+         class="btn-download inline-flex items-center gap-3 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl text-base font-semibold transition-all mb-6">
+        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.62 2.18L1.5 11.02l3.11 5.38 5.12-8.84L6.62 2.18zm11.58 0l-3.11 5.38H22.5L17.38 2.18zM8.56 9.84l-3.11 5.38h6.22l3.11-5.38H8.56zm9.07 1.56l-3.11 5.38L11.41 22h6.22l3.11-5.38-3.11-5.22zm-7.02 5.38L8.56 22h6.22l2.05-3.55-6.22-.07z"/>
+        </svg>
+        Abrir carpeta en Google Drive
+      </a>
+
+      <p class="text-slate-600 text-xs mb-12">73 clips &middot; 14.6 GB &middot; 4K &middot; DJI Mini 5 Pro</p>
+
+      <!-- Divider -->
+      <div class="border-t border-white/5 pt-10">
+        <p class="text-slate-500 text-sm mb-1">Grabado por</p>
+        <p class="text-white font-semibold mb-1">Altamira Drones</p>
+        <p class="text-slate-500 text-sm mb-6">Servicios profesionales con dron para arquitectura e ingenieria — Madrid</p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm">
+          <a href="https://altamiradrones.com" class="text-cyan-400 hover:text-cyan-300 transition-colors">altamiradrones.com</a>
+          <span class="text-slate-700">&middot;</span>
+          <a href="https://instagram.com/altamira_drones" target="_blank" class="text-slate-500 hover:text-slate-300 transition-colors">@altamira_drones</a>
+          <span class="text-slate-700">&middot;</span>
+          <a href="https://wa.me/34638099208" target="_blank" class="text-slate-500 hover:text-slate-300 transition-colors">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
