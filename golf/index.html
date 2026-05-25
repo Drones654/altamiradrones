@@ -257,12 +257,11 @@
             <h3 class="text-white font-semibold text-xl mb-1">Deja tus datos</h3>
             <p class="text-slate-500 text-sm mb-6">Recibirás el enlace de descarga al instante.</p>
 
-            <form id="golf-form" action="https://formsubmit.co/altamiradronesrrss@gmail.com" method="POST" class="space-y-4">
-              <input type="hidden" name="_subject" value="Nuevo acceso videos Golf Arquitectos">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="https://altamiradrones.com/golf/gracias/">
-              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <form id="golf-form" class="space-y-4">
+              <input type="hidden" name="access_key" value="8daf562f-32bb-47d0-9121-808f54d37add">
+              <input type="hidden" name="subject" value="Nuevo acceso videos Golf Arquitectos">
+              <input type="hidden" name="from_name" value="Altamira Drones — Golf">
+              <input type="hidden" name="botcheck" value="" style="display:none">
               <input type="hidden" name="evento" value="XV Campeonato Golf Arquitectos Madrid - 21 Mayo 2026">
 
               <div>
@@ -382,11 +381,30 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
     document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
 
-    // Show loading state on submit
-    document.getElementById('golf-form').addEventListener('submit', function() {
+    // Form submit via Web3Forms
+    document.getElementById('golf-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
       const btn = document.getElementById('golf-submit');
       btn.textContent = 'Enviando...';
       btn.disabled = true;
+      const data = Object.fromEntries(new FormData(this));
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.success) {
+          window.location.href = 'https://altamiradrones.com/golf/gracias/';
+        } else {
+          throw new Error(json.message);
+        }
+      } catch(err) {
+        btn.textContent = 'Acceder a los vídeos →';
+        btn.disabled = false;
+        alert('Error al enviar. Por favor escríbenos a altamiradronesrrss@gmail.com');
+      }
     });
   </script>
 
