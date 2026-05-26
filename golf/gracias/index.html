@@ -66,20 +66,43 @@
 
       <h1 class="text-3xl sm:text-4xl font-bold text-white mb-3">Acceso concedido</h1>
       <p class="text-slate-400 text-lg mb-10 leading-relaxed">
-        Aqui tienes los 73 clips del torneo. Puedes descargar los que quieras directamente desde Google Drive.
+        Aquí tienes los clips originales y el vídeo editado completo del torneo. Descarga lo que quieras desde Google Drive.
       </p>
 
-      <!-- Drive button -->
-      <a href="https://drive.google.com/drive/folders/1ZGwwRQ6jhGRLdFY4RXBWRWsRHgRpLo4q?usp=sharing"
-         target="_blank" rel="noopener"
-         class="btn-download inline-flex items-center gap-3 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl text-base font-semibold transition-all mb-6">
-        <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M6.62 2.18L1.5 11.02l3.11 5.38 5.12-8.84L6.62 2.18zm11.58 0l-3.11 5.38H22.5L17.38 2.18zM8.56 9.84l-3.11 5.38h6.22l3.11-5.38H8.56zm9.07 1.56l-3.11 5.38L11.41 22h6.22l3.11-5.38-3.11-5.22zm-7.02 5.38L8.56 22h6.22l2.05-3.55-6.22-.07z"/>
-        </svg>
-        Abrir carpeta en Google Drive
-      </a>
+      <!-- Download options -->
+      <div class="grid sm:grid-cols-2 gap-4 mb-12 text-left">
 
-      <p class="text-slate-600 text-xs mb-12">73 clips &middot; 14.6 GB &middot; 4K &middot; DJI Mini 5 Pro</p>
+        <!-- Card 1: Clips originales -->
+        <a href="https://drive.google.com/drive/folders/1ZGwwRQ6jhGRLdFY4RXBWRWsRHgRpLo4q?usp=sharing"
+           target="_blank" rel="noopener"
+           class="group border border-cyan-500/30 hover:border-cyan-500/60 bg-cyan-500/5 hover:bg-cyan-500/10 rounded-xl p-5 transition-all flex flex-col gap-3">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 2.18L1.5 11.02l3.11 5.38 5.12-8.84L6.62 2.18zm11.58 0l-3.11 5.38H22.5L17.38 2.18zM8.56 9.84l-3.11 5.38h6.22l3.11-5.38H8.56zm9.07 1.56l-3.11 5.38L11.41 22h6.22l3.11-5.38-3.11-5.22zm-7.02 5.38L8.56 22h6.22l2.05-3.55-6.22-.07z"/>
+            </svg>
+            <span class="text-white font-semibold text-sm">Clips originales</span>
+          </div>
+          <p class="text-slate-500 text-xs leading-relaxed">73 clips en 4K sin editar. Descarga los que quieras.</p>
+          <p class="text-slate-600 text-xs">73 clips &middot; 14.6 GB &middot; 4K</p>
+          <span class="text-cyan-400 text-xs font-medium group-hover:text-cyan-300 transition-colors mt-auto">Abrir en Drive &rarr;</span>
+        </a>
+
+        <!-- Card 2: Vídeo editado -->
+        <a href="https://drive.google.com/file/d/1xcmoP3TiWhRHtUm_V3WYfixN9rXUVQ9_/view?usp=sharing"
+           target="_blank" rel="noopener"
+           class="group border border-cyan-500/30 hover:border-cyan-500/60 bg-cyan-500/5 hover:bg-cyan-500/10 rounded-xl p-5 transition-all flex flex-col gap-3">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            <span class="text-white font-semibold text-sm">Vídeo editado completo</span>
+          </div>
+          <p class="text-slate-500 text-xs leading-relaxed">Todos los clips montados con música y títulos. El resumen del torneo.</p>
+          <p class="text-slate-600 text-xs">1 vídeo &middot; ~6 GB &middot; 25 min</p>
+          <span class="text-cyan-400 text-xs font-medium group-hover:text-cyan-300 transition-colors mt-auto">Abrir en Drive &rarr;</span>
+        </a>
+
+      </div>
 
       <!-- Divider -->
       <div class="border-t border-white/5 pt-10">
