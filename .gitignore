@@ -1,3 +1,23 @@
 .wrangler/
 tmp/
 *.pyc
+
+# --- Material interno: NUNCA debe publicarse ---
+# Este repo se despliega tal cual en altamiradrones.com. Cualquier fichero
+# trackeado aqui queda accesible publicamente por su URL.
+market_study/
+business_plan/
+Flies/
+*.docx
+*.xlsx
+
+# Scripts y capturas de trabajo
+debug_*.png
+debug_*.py
+validation_*.png
+approval_*.png
+inspect_form.py
+add_dns.py
+add_ssl_txt.py
+approve_cert.py
+.claude/
