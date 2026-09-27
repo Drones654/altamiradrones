@@ -3,854 +3,388 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Altamira Drones — Soluciones profesionales con drones para ciudad, campo e innovación</title>
-  <meta name="description" content="Altamira Drones desarrolla servicios aéreos avanzados para entornos urbanos, rurales, agrícolas y ganaderos. Inspección técnica, fotogrametría, agricultura de precisión e I+D+i.">
-  <meta property="og:title" content="Altamira Drones — Soluciones con drones para ciudad, campo e innovación">
-  <meta property="og:description" content="Servicios aéreos avanzados para inspección, fotogrametría, agricultura, ganadería e innovación aplicada.">
+  <title>Altamira Drones — Inspección, medición y documentación con dron</title>
+  <meta name="description" content="Servicios técnicos con dron en Madrid: termografía de envolventes y cubiertas, inspección de fachadas, fotogrametría y modelos 3D, topografía, documentación de obra, zonas verdes y agricultura de precisión.">
+  <meta property="og:title" content="Altamira Drones — Inspección, medición y documentación con dron">
+  <meta property="og:description" content="Servicios técnicos con dron en Madrid: termografía de envolventes y cubiertas, inspección de fachadas, fotogrametría y modelos 3D, topografía, documentación de obra, zonas verdes y agricultura de precisión.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://altamiradrones.com/es/">
+  <meta property="og:image" content="https://altamiradrones.com/img/web/portada.jpg">
+  <link rel="canonical" href="https://altamiradrones.com/es/">
   <link rel="alternate" hreflang="en" href="https://altamiradrones.com/">
   <link rel="alternate" hreflang="es" href="https://altamiradrones.com/es/">
   <link rel="alternate" hreflang="x-default" href="https://altamiradrones.com/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9992;</text></svg>">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="../img/web/toro.png">
+  <meta name="theme-color" content="#8C2418">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-          colors: {
-            brand: { 50:'#ecfeff', 100:'#cffafe', 200:'#a5f3fc', 300:'#67e8f9', 400:'#22d3ee', 500:'#06b6d4', 600:'#0891b2', 700:'#0e7490', 800:'#155e75', 900:'#164e63' },
-            electric: { 400:'#60a5fa', 500:'#3b82f6', 600:'#2563eb' },
-            agri: { 400:'#4ade80', 500:'#22c55e', 600:'#16a34a' },
-            dark: { 800:'#0a0f1a', 900:'#060a12', 950:'#030508' }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { background: #060a12; overflow-x: hidden; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
-    .grid-overlay {
-      background-image:
-        linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(6,182,212,0.04) 1px, transparent 1px);
-      background-size: 80px 80px;
-    }
-    .glow-line { background: linear-gradient(90deg, transparent, rgba(6,182,212,0.3), transparent); height: 1px; }
-    .fade-up {
-      opacity: 0; transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    @keyframes float-slow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
-    @keyframes float-med { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-15px) rotate(3deg)} }
-    .float-slow { animation: float-slow 8s ease-in-out infinite; }
-    .float-med { animation: float-med 6s ease-in-out infinite; }
-    .text-gradient {
-      background: linear-gradient(135deg, #06b6d4, #3b82f6, #22c55e);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .text-gradient-cyan {
-      background: linear-gradient(135deg, #22d3ee, #06b6d4);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .service-card {
-      border: 1px solid rgba(6,182,212,0.1);
-      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-    }
-    .service-card:hover {
-      border-color: rgba(6,182,212,0.3); transform: translateY(-4px);
-      box-shadow: 0 20px 60px -15px rgba(6,182,212,0.1);
-    }
-    .sector-card {
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-      position: relative; overflow: hidden;
-    }
-    .sector-card::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity:0; transition: opacity 0.4s;
-    }
-    .sector-card:hover::before { opacity:1; }
-    .sector-card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-2px); }
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content:''; position:absolute; bottom:-4px; left:0; right:0;
-      height:2px; background:#06b6d4; transform:scaleX(0); transition:transform 0.3s;
-    }
-    .nav-link:hover::after, .nav-link.active::after { transform:scaleX(1); }
-    .mobile-menu-inner {
-      max-height: 0; overflow: hidden; opacity: 0;
-      transition: max-height 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.25s ease;
-    }
-    .mobile-menu-inner.open { max-height: 400px; opacity: 1; }
-    @media (max-width: 1023px) {
-      .touch-target { min-height: 48px; display: flex; align-items: center; }
-      .touch-link { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; }
-    }
-    ::-webkit-scrollbar { width:6px; }
-    ::-webkit-scrollbar-track { background:#060a12; }
-    ::-webkit-scrollbar-thumb { background:#164e63; border-radius:3px; }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/altamira.css">
+  <link rel="preload" as="image" href="../img/web/portada.jpg">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 </head>
-<body class="font-sans text-slate-300 antialiased">
+<body>
 
-  <!-- NAV -->
-  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 lg:h-20">
-        <a href="/es/" class="flex items-center space-x-2.5 group touch-link">
-          <img src="../img/logo-toro.png" alt="Altamira Drones" class="h-9 w-auto" style="filter:invert(1);mix-blend-mode:screen;opacity:0.92;">
-          <span class="text-lg font-semibold tracking-tight">
-            <span class="text-white">ALTAMIRA</span><span class="text-cyan-400">DRONES</span>
-          </span>
-        </a>
-        <div class="hidden lg:flex items-center space-x-8">
-          <a href="#urbano" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Urbano</a>
-          <a href="#agricultura" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Agricultura</a>
-          <a href="#innovacion" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">I+D+i</a>
-          <a href="#proyectos" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Proyectos</a>
-          <a href="#nosotros" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Nosotros</a>
-          <a href="#contacto" class="border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500/10 text-cyan-400 px-5 py-2 rounded-lg text-sm font-medium transition-all">Contacto</a>
-          <div class="flex items-center border-l border-white/10 pl-6 ml-2">
-            <a href="/" class="text-slate-500 hover:text-white text-xs font-medium transition-colors">EN</a>
-            <span class="text-slate-600 text-xs mx-1.5">/</span>
-            <span class="text-white text-xs font-semibold">ES</span>
-          </div>
-        </div>
-        <button id="mobile-btn" class="lg:hidden text-slate-400 p-3 -mr-2 hover:text-white transition-colors relative z-10" aria-label="Menu" aria-expanded="false">
-          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div id="mobile-menu" class="lg:hidden">
-        <div id="mobile-menu-inner" class="mobile-menu-inner pb-6 border-t border-white/5 mt-2 pt-4 bg-[#060a12] rounded-b-xl px-2">
-          <a href="#urbano" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Servicios urbanos</a>
-          <a href="#agricultura" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Agricultura y ganadería</a>
-          <a href="#innovacion" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Innovación / I+D+i</a>
-          <a href="#proyectos" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Proyectos</a>
-          <a href="#nosotros" class="touch-target block py-3 text-sm text-slate-400 hover:text-white active:text-cyan-400">Nosotros</a>
-          <a href="#contacto" class="touch-target block mt-3 border border-cyan-500/40 text-cyan-400 px-5 py-3 rounded-lg text-sm font-medium text-center active:bg-cyan-500/10">Contacto</a>
-          <div class="flex items-center justify-center gap-4 mt-5 pt-4 border-t border-white/5">
-            <a href="/" class="text-slate-500 hover:text-white text-sm font-medium transition-colors px-3 py-2 touch-link">EN</a>
-            <span class="text-slate-600 text-sm">/</span>
-            <span class="text-white text-sm font-semibold px-3 py-2">ES</span>
-          </div>
-        </div>
-      </div>
+  <header class="nav" id="nav">
+    <div class="contenedor nav__fila">
+      <a class="marca" href="#inicio" aria-label="Altamira Drones">
+        <img class="toro-rojo" src="../img/web/toro.png" alt="" width="65" height="30">
+        <img class="toro-blanco" src="../img/web/toro-blanco.png" alt="" width="65" height="30">
+        <span>ALTAMIRA DRONES</span>
+      </a>
+      <button class="nav__boton" id="nav-boton" aria-label="Menú" aria-expanded="false" aria-controls="nav-enlaces">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__enlaces" id="nav-enlaces"><a href="#servicios">Servicios</a><a href="#agricultura">Agricultura</a><a href="#proyectos">Proyectos</a><a href="#noticias">Noticias</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a><span class="idioma"><strong>ES</strong> / <a href="../" hreflang="en">EN</a></span></nav>
     </div>
-  </nav>
+  </header>
 
-  <!-- HERO -->
-  <section class="relative min-h-screen flex items-center overflow-hidden">
-    <div class="grid-overlay absolute inset-0"></div>
-    <div class="absolute top-1/4 -right-32 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] float-slow"></div>
-    <div class="absolute bottom-1/4 -left-32 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] float-med"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-cyan-500/[0.03] rounded-full"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-cyan-500/[0.05] rounded-full"></div>
-    <div class="absolute top-20 left-8 w-px h-32 bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent"></div>
-    <div class="absolute top-32 left-8 w-16 h-px bg-gradient-to-r from-cyan-500/20 to-transparent"></div>
-    <div class="absolute bottom-20 right-8 w-px h-32 bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent"></div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="max-w-xl">
-          <div class="fade-up inline-flex items-center px-3 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-8">
-            <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-2.5 animate-pulse"></span>
-            <span class="text-cyan-300 text-xs font-medium tracking-wider uppercase">Madrid &middot; España &middot; Europa</span>
-          </div>
-
-          <h1 class="fade-up text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-8 tracking-tight" style="transition-delay:0.1s">
-            Soluciones profesionales<br>
-            <span class="text-gradient">con drones para ciudad,<br>campo e innovación</span>
-          </h1>
-
-          <p class="fade-up text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed font-light" style="transition-delay:0.2s">
-            En Altamira Drones desarrollamos servicios aéreos avanzados para entornos urbanos, rurales, agrícolas y ganaderos. Trabajamos en captura de datos, inspección técnica, fotogrametría, análisis territorial y soluciones innovadoras con base en Madrid y ámbito de actuación en España y Europa.
-          </p>
-
-          <div class="fade-up flex flex-col sm:flex-row gap-4" style="transition-delay:0.3s">
-            <a href="#urbano" class="group bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all hover:shadow-lg hover:shadow-cyan-500/20 text-center flex items-center justify-center gap-2">
-              Explorar servicios
-              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </a>
-            <a href="#contacto" class="border border-white/10 hover:border-white/25 text-white px-8 py-4 rounded-xl text-sm font-semibold transition-all text-center hover:bg-white/5">
-              Contactar
-            </a>
-          </div>
-        </div>
-
-        <!-- Hero image -->
-        <div class="fade-up hidden lg:flex justify-center" style="transition-delay:0.4s">
-          <div class="relative">
-            <div class="absolute -inset-4 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10 rounded-3xl blur-2xl"></div>
-            <img src="../img/drone-hero.jpg" alt="Dron profesional en vuelo sobre campos verdes" class="relative w-[480px] h-[480px] object-cover rounded-2xl border border-white/5 shadow-2xl shadow-cyan-900/20 float-slow" loading="eager">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-      <span class="text-[10px] text-slate-600 uppercase tracking-widest">Scroll</span>
-      <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7"/></svg>
-    </div>
-  </section>
-
-  <!-- INTRO -->
-  <section class="relative py-24 lg:py-32">
-    <div class="glow-line w-full mb-24"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="fade-up">
-          <p class="text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">Qué hacemos</p>
-          <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
-            Operaciones con drones orientadas a desafíos reales
-          </h2>
-        </div>
-        <div class="fade-up" style="transition-delay:0.15s">
-          <p class="text-slate-400 leading-relaxed mb-6">
-            Altamira Drones es una empresa con base en Madrid dedicada a servicios aéreos avanzados para entornos urbanos y rurales. Combinamos operación con drones, inteligencia visual, datos geoespaciales y desarrollo orientado a la innovación para apoyar inspecciones técnicas, fotogrametría, análisis agrícola, gestión territorial y soluciones digitales de nueva generación.
-          </p>
-          <p class="text-slate-400 leading-relaxed">
-            Nuestro trabajo va más allá de la imagen aérea. Desarrollamos servicios orientados a datos e innovación, diseñados para apoyar la toma de decisiones, la eficiencia operativa y las aplicaciones sectoriales en arquitectura, infraestructura, agricultura y ganadería.
-          </p>
-        </div>
-      </div>
-
-      <!-- Sector cards -->
-      <div class="grid md:grid-cols-3 gap-6 mt-20">
-        <a href="#urbano" class="sector-card rounded-2xl p-8 bg-white/[0.02] fade-up" style="--accent:#06b6d4">
-          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-          </div>
-          <h3 class="text-white font-semibold text-lg mb-3">Entorno urbano</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Fotogrametría, inspecciones técnicas, documentación de obra, análisis visual de activos, apoyo a arquitectura e ingeniería y captación aérea del entorno construido.</p>
-        </a>
-
-        <a href="#agricultura" class="sector-card rounded-2xl p-8 bg-white/[0.02] fade-up" style="--accent:#22c55e; transition-delay:0.1s">
-          <div class="w-10 h-10 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="text-white font-semibold text-lg mb-3">Agricultura y ganadería</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Aplicación aérea de productos, índices espectrales, mapeo de suelo, gestión de parcelas, prevención y detección temprana, apoyo a agricultura de precisión y soluciones para ganadería.</p>
-        </a>
-
-        <a href="#innovacion" class="sector-card rounded-2xl p-8 bg-white/[0.02] fade-up" style="--accent:#3b82f6; transition-delay:0.2s">
-          <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-          </div>
-          <h3 class="text-white font-semibold text-lg mb-3">Innovación e I+D+i</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Orientación firme hacia la I+D+i y el desarrollo de herramientas digitales para agricultura, ganadería e inteligencia territorial.</p>
-        </a>
+  <section class="portada" id="inicio">
+    <img class="portada__img" src="../img/web/portada.jpg" alt="" fetchpriority="high">
+    <div class="contenedor portada__texto">
+      <p class="etiqueta">Madrid · España y Europa</p>
+      <h1>Inspección y datos aéreos para construir, conservar y cultivar</h1>
+      <p class="portada__sub">Termografía, medición y documentación con dron. Capturamos el dato, lo procesamos y lo entregamos listo para usar.</p>
+      <div class="portada__pie">
+        <a class="boton" href="#servicios">Ver servicios →</a>
+        <a class="enlace-flecha" href="#contacto">Contactar</a>
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS URBANOS -->
-  <section id="urbano" class="relative py-24 lg:py-32">
-    <div class="glow-line w-full mb-24"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mb-16">
-        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">01 / Servicios urbanos</p>
-        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
-          Inteligencia aérea para el entorno construido
-        </h2>
-        <p class="fade-up text-slate-400 leading-relaxed text-lg" style="transition-delay:0.2s">
-          Altamira Drones ofrece servicios especializados para entornos urbanos, edificación, infraestructuras y gestión técnica del territorio. Utilizamos tecnología dron para obtener información visual y geoespacial de alta calidad, optimizar inspecciones y mejorar la toma de decisiones.
-        </p>
+  <section class="seccion">
+    <div class="contenedor intro">
+      <div class="aparece">
+        <p class="etiqueta">Qué hacemos</p>
+        <h2 class="titulo-seccion" style="margin-top:14px">Del vuelo al dato que se puede usar</h2>
       </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up">
-          <div class="text-cyan-400 mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-          </div>
-          <h3 class="text-white font-semibold mb-2">Inspecciones técnicas</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Inspecciones visuales y técnicas de cubiertas, fachadas, estructuras, edificios singulares y activos de difícil acceso sin recurrir a medios auxiliares más complejos.</p>
-        </div>
-
-        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.05s">
-          <div class="text-cyan-400 mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-          </div>
-          <h3 class="text-white font-semibold mb-2">Fotogrametría y levantamiento aéreo</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Captación aérea para generación de ortomosaicos georreferenciados, modelos 3D, documentación visual y apoyo a levantamientos topográficos.</p>
-        </div>
-
-        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.1s">
-          <div class="text-cyan-400 mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1"/></svg>
-          </div>
-          <h3 class="text-white font-semibold mb-2">Observación de edificios y activos</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Observación aérea dirigida de edificios, envolventes, superficies estructurales y condiciones de emplazamiento para revisión técnica y soporte operativo.</p>
-        </div>
-
-        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up">
-          <div class="text-cyan-400 mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="text-white font-semibold mb-2">Documentación de obra</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Registros visuales periódicos para seguimiento de obra, control de evolución, comunicación con equipos técnicos y soporte documental para promotores y constructoras.</p>
-        </div>
-
-        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.05s">
-          <div class="text-cyan-400 mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          </div>
-          <h3 class="text-white font-semibold mb-2">Apoyo a arquitectura e ingeniería</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Servicios con drones diseñados para apoyar a arquitectos, consultores técnicos, ingenieros y planificadores con información visual y territorial fiable.</p>
-        </div>
-
-        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.1s">
-          <div class="text-cyan-400 mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-          </div>
-          <h3 class="text-white font-semibold mb-2">Modelado y visualización</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Material útil para análisis espacial, integración en flujos GIS, apoyo a planificación urbana y visualización técnica de emplazamientos.</p>
-        </div>
-
-        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up">
-          <div class="text-cyan-400 mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          </div>
-          <h3 class="text-white font-semibold mb-2">Mantenimiento preventivo</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Apoyo en revisiones visuales para mantenimiento preventivo, detección de incidencias superficiales y generación de material técnico para evaluación posterior.</p>
-        </div>
-
-        <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="transition-delay:0.05s">
-          <div class="text-cyan-400 mb-4">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
-          </div>
-          <h3 class="text-white font-semibold mb-2">Patrimonio y edificios complejos</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">Inspección y documentación de edificios históricos, fachadas complejas y activos donde el acceso físico resulta costoso o delicado.</p>
-        </div>
-      </div>
-
-      <div class="mt-16 pt-8 border-t border-white/5 fade-up">
-        <p class="text-slate-500 text-sm max-w-2xl">Ayudamos a los sectores urbanos y técnicos a trabajar con mayor visibilidad, acceso más rápido a la información y documentación aérea más eficiente.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- AGRICULTURA Y GANADERIA -->
-  <section id="agricultura" class="relative py-24 lg:py-32">
-    <div class="glow-line w-full mb-24"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mb-16">
-        <p class="fade-up text-xs font-medium text-green-400 tracking-widest uppercase mb-4">02 / Agricultura y ganadería</p>
-        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
-          Sistemas aéreos de precisión para campo y ganadería
-        </h2>
-        <p class="fade-up text-slate-400 leading-relaxed text-lg" style="transition-delay:0.2s">
-          Altamira Drones desarrolla soluciones orientadas a la mejora de la gestión agrícola y ganadera mediante captación aérea, análisis territorial, observación multiespectral y desarrollo de herramientas innovadoras.
-        </p>
-      </div>
-
-      <!-- Agricultura -->
-      <div class="mb-16">
-        <h3 class="fade-up text-xl font-semibold text-white mb-8 flex items-center gap-3">
-          <span class="w-8 h-px bg-green-500/50"></span>
-          Agricultura
-        </h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1)">
-            <h4 class="text-white font-semibold mb-2">Aplicación aérea de productos</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Servicios de aplicación aérea dentro del marco operativo y normativo aplicable, orientados a mejorar eficiencia, cobertura y gestión técnica de la explotación.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.05s">
-            <h4 class="text-white font-semibold mb-2">Índices espectrales y análisis multiespectral</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Captación y análisis de información multiespectral para evaluar el estado del cultivo. Índices NDVI, SAVI, TSAVI y otros indicadores para vigor vegetal y condiciones del cultivo.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.1s">
-            <h4 class="text-white font-semibold mb-2">Mapeo de suelo y análisis territorial</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Cartografía útil para gestión de parcelas, organización del terreno, identificación de zonas diferenciales, apoyo a muestreo y planificación técnica.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1)">
-            <h4 class="text-white font-semibold mb-2">Monitorización de cultivos</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Monitorización visual y basada en datos para identificar variabilidad, observar patrones de desarrollo y mejorar la conciencia situacional en parcelas agrícolas.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.05s">
-            <h4 class="text-white font-semibold mb-2">Detección temprana de incidencias</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Revisión aérea de condiciones que puedan indicar estrés, desarrollo irregular o problemas que requieran seguimiento agronómico y validación específica.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.1s">
-            <h4 class="text-white font-semibold mb-2">Apoyo a riego y recursos</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Observación aérea para localizar heterogeneidades, zonas con comportamiento anómalo y áreas donde conviene revisar manejo, drenaje o estrategia de riego.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ganaderia -->
-      <div>
-        <h3 class="fade-up text-xl font-semibold text-white mb-8 flex items-center gap-3">
-          <span class="w-8 h-px bg-green-500/50"></span>
-          Ganadería
-        </h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1)">
-            <h4 class="text-white font-semibold mb-2">Conteo y localización de animales</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Apoyo aéreo para localizar animales, apoyar recuentos y mejorar la supervisión en grandes extensiones o zonas de difícil acceso.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.05s">
-            <h4 class="text-white font-semibold mb-2">Supervisión de parcelas y pastoreo</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Observación aérea de uso de pastos, ocupación del terreno, estado de cercados y patrones de distribución en áreas ganaderas.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.1s">
-            <h4 class="text-white font-semibold mb-2">Revisión de infraestructuras</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Captación aérea para revisión visual de instalaciones, puntos de agua, comederos, cerramientos y otras infraestructuras de la explotación.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1)">
-            <h4 class="text-white font-semibold mb-2">Observación del comportamiento</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Apoyo aéreo para observar patrones de movimiento, agrupaciones, dispersión y otras dinámicas visibles relevantes para la supervisión en campo.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.05s">
-            <h4 class="text-white font-semibold mb-2">Monitorización de grandes áreas</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Revisión visual rápida de extensas áreas rurales para una supervisión operativa más ágil y una mejor conciencia situacional.</p>
-          </div>
-          <div class="service-card rounded-xl p-7 bg-white/[0.02] fade-up" style="border-color:rgba(34,197,94,0.1);transition-delay:0.1s">
-            <h4 class="text-white font-semibold mb-2">Gestión digital ganadera</h4>
-            <p class="text-slate-500 text-sm leading-relaxed">Flujos de trabajo con drones que se integran con sistemas digitales más amplios para la gestión ganadera y territorial.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-16 pt-8 border-t border-white/5 fade-up">
-        <p class="text-slate-500 text-sm max-w-3xl">Nuestro enfoque combina capacidad aérea, comprensión operativa e innovación para apoyar una gestión agrícola y ganadera más eficiente, inteligente y escalable.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- INNOVACION / I+D+i -->
-  <section id="innovacion" class="relative py-24 lg:py-32">
-    <div class="glow-line w-full mb-24"></div>
-    <div class="absolute top-1/2 right-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] -translate-y-1/2"></div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <p class="fade-up text-xs font-medium text-blue-400 tracking-widest uppercase mb-4">03 / Innovación</p>
-          <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
-            I+D+i en el centro de la empresa
-          </h2>
-          <p class="fade-up text-slate-400 leading-relaxed text-lg mb-8" style="transition-delay:0.2s">
-            En Altamira Drones entendemos la tecnología dron no solo como una herramienta de captación de imágenes, sino como una plataforma para desarrollar soluciones avanzadas de análisis, gestión y apoyo a la toma de decisiones.
-          </p>
-          <p class="fade-up text-slate-400 leading-relaxed" style="transition-delay:0.25s">
-            Nuestro objetivo es crear valor más allá de la imagen, combinando operación con drones, datos aplicados, interpretación técnica y desarrollo digital en soluciones útiles para el mundo real. Esta mentalidad innovadora es especialmente relevante en sectores donde la eficiencia, la visibilidad en campo, la inteligencia territorial y la capacidad de respuesta operativa son críticas.
-          </p>
-        </div>
-
-        <div class="fade-up" style="transition-delay:0.3s">
-          <div class="border border-white/5 rounded-2xl p-8 bg-white/[0.01]">
-            <h4 class="text-white font-semibold mb-6 text-sm uppercase tracking-wider">Áreas de I+D+i</h4>
-            <div class="space-y-4">
-              <div class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
-                <span class="text-slate-400 text-sm">Agricultura de precisión y herramientas de gestión</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
-                <span class="text-slate-400 text-sm">Soluciones de gestión y monitorización ganadera</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
-                <span class="text-slate-400 text-sm">Inteligencia de parcelas y digitalización del territorio</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
-                <span class="text-slate-400 text-sm">Flujos de trabajo de análisis multiespectral y datos espectrales</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
-                <span class="text-slate-400 text-sm">Interpretación de datos aéreos y analítica avanzada</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0"></span>
-                <span class="text-slate-400 text-sm">Sistemas de soporte operativo basados en software</span>
-              </div>
-            </div>
-          </div>
-          <p class="text-slate-600 text-xs mt-6 italic">Nuestra visión combina operación aérea, tratamiento de datos y desarrollo de soluciones innovadoras que aporten valor técnico real.</p>
+      <div class="aparece">
+        <p class="lead">Altamira Drones es una empresa madrileña de servicios técnicos con dron. Capturamos el dato, lo procesamos y lo entregamos convertido en algo que se puede usar: un informe que señala dónde está el problema, un modelo que se mide desde la oficina, un plano que se lleva a obra.</p>
+        <p>Trabajamos para constructoras, promotoras, arquitectos, ingenierías, administraciones y explotaciones agrarias. Cada servicio se explica abajo con lo que incluye, lo que se entrega y cuándo tiene sentido hacerlo.</p>
+        <div class="bloque-linea">
+          <p class="etiqueta" style="margin-bottom:14px">Cómo trabajamos</p>
+          <ul class="lista-guion"><li>Tramitamos los permisos y las coordinaciones de cada vuelo, también en los espacios aéreos controlados de Madrid.</li><li>Vuelos planificados y repetibles: misma ruta y altura, resultados comparables entre fechas.</li><li>Entregables en formatos estándar y en visor web, accesibles desde el móvil.</li></ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROYECTOS -->
-  <section id="proyectos" class="relative py-24 lg:py-32">
-    <div class="glow-line w-full mb-24"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-      <div class="max-w-3xl mb-16">
-        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">04 / Proyectos</p>
-        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
-          Trabajo en campo
-        </h2>
-        <p class="fade-up text-slate-400 text-lg leading-relaxed" style="transition-delay:0.2s">
-          Proyectos reales, datos reales. Cada trabajo genera entregables georreferenciados — ortofotografías, nubes de puntos, modelos 3D y modelos de elevación — listos para arquitectura, ingeniería y patrimonio.
-        </p>
-      </div>
-
-      <!-- Proyecto: Torre San Leonardo -->
-      <div class="fade-up sector-card rounded-2xl overflow-hidden bg-white/[0.02]" style="--accent:#06b6d4; transition-delay:0.3s">
-        <div class="grid lg:grid-cols-2 gap-0">
-
-          <!-- Visor 3D -->
-          <div class="relative min-h-[380px] lg:min-h-[480px] bg-black/30">
-            <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-            <model-viewer
-              src="../img/torre-san-leonardo-crop.glb"
-              camera-controls
-              auto-rotate
-              auto-rotate-delay="500"
-              rotation-per-second="20deg"
-              environment-image="neutral"
-              shadow-intensity="1"
-              style="width:100%;height:100%;min-height:380px;background:transparent;"
-              alt="Modelo 3D fotogramétrico Torre San Leonardo">
-            </model-viewer>
-            <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs text-slate-400">
-              ↕ Arrastra para rotar · Scroll para zoom
-            </div>
-          </div>
-
-          <!-- Datos del proyecto -->
-          <div class="p-8 lg:p-12 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-3 mb-6">
-                <span class="text-xs font-medium text-cyan-400 tracking-widest uppercase border border-cyan-500/30 px-3 py-1 rounded-full">Documentación patrimonial</span>
-                <span class="text-xs text-slate-600">Marzo 2026</span>
-              </div>
-              <h3 class="text-2xl font-bold text-white mb-3">Torre San Leonardo</h3>
-              <p class="text-slate-500 text-sm mb-2">Hinojosa de Duero, Salamanca — Parque Natural Arribes del Duero</p>
-              <p class="text-slate-400 text-sm leading-relaxed mt-4 mb-8">
-                Levantamiento fotogramétrico de la espadaña románica de un despoblado medieval. La estructura es uno de los últimos vestigios del poblado de San Leonardo, abandonado a principios del siglo XIX. El conjunto de datos proporciona un registro digital permanente para administraciones, arquitectos e investigadores.
-              </p>
-
-              <!-- Stats -->
-              <div class="grid grid-cols-2 gap-4 mb-8">
-                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
-                  <div class="text-cyan-400 font-bold text-xl">0,54 cm</div>
-                  <div class="text-slate-500 text-xs mt-1">Resolución en suelo (GSD)</div>
-                </div>
-                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
-                  <div class="text-cyan-400 font-bold text-xl">11,7 M</div>
-                  <div class="text-slate-500 text-xs mt-1">Densidad de nube de puntos</div>
-                </div>
-                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
-                  <div class="text-cyan-400 font-bold text-xl">86</div>
-                  <div class="text-slate-500 text-xs mt-1">Imágenes procesadas</div>
-                </div>
-                <div class="bg-white/[0.03] rounded-xl p-4 border border-white/5">
-                  <div class="text-cyan-400 font-bold text-xl">4,4 ha</div>
-                  <div class="text-slate-500 text-xs mt-1">Área cubierta</div>
-                </div>
-              </div>
-
-              <!-- Entregables -->
-              <div class="flex flex-wrap gap-2 mb-8">
-                <span class="text-xs bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">Ortofoto</span>
-                <span class="text-xs bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">Nube de puntos (LAZ)</span>
-                <span class="text-xs bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">Modelo 3D texturizado</span>
-                <span class="text-xs bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">MDS</span>
-              </div>
-            </div>
-
-            <!-- CTA -->
-            <div class="flex flex-wrap gap-4">
-              <a href="#contacto"
-                class="border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-500/10 text-cyan-400 px-5 py-2.5 rounded-lg text-sm font-medium transition-all">
-                Solicitar levantamiento
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
+  <section class="seccion seccion--alt" id="servicios">
+    <div class="contenedor">
+      <h2 class="titulo-seccion aparece">Servicios</h2>
+      <div class="indice aparece"><a href="#termografia-envolventes"><span class="indice__num">01</span><span class="indice__titulo">Termografía exterior de envolventes</span><span class="indice__sub">Edificios Passivhaus y de alta eficiencia energética</span></a><a href="#sate"><span class="indice__num">02</span><span class="indice__titulo">Control de calidad del SATE</span><span class="indice__sub">Aislamiento por el exterior: durante la obra y en la recepción</span></a><a href="#cubiertas"><span class="indice__num">03</span><span class="indice__titulo">Humedad en cubiertas planas</span><span class="indice__sub">Localizar el agua antes de levantar la cubierta</span></a><a href="#fotovoltaica"><span class="indice__num">04</span><span class="indice__titulo">Inspección termográfica de placas solares</span><span class="indice__sub">Recepción de la instalación y revisiones periódicas</span></a><a href="#fachadas"><span class="indice__num">05</span><span class="indice__titulo">Inspección visual de fachadas y cubiertas</span><span class="indice__sub">Patologías sin andamios ni plataformas elevadoras</span></a><a href="#fotogrametria"><span class="indice__num">06</span><span class="indice__titulo">Fotogrametría y modelado 3D</span><span class="indice__sub">Modelos medibles, ortofotos y nubes de puntos</span></a><a href="#topografia"><span class="indice__num">07</span><span class="indice__titulo">Topografía y cubicaciones</span><span class="indice__sub">Movimiento de tierras: desmonte, terraplén y acopios</span></a><a href="#obra"><span class="indice__num">08</span><span class="indice__titulo">Obra: los momentos que hay que documentar</span><span class="indice__sub">No un vuelo diario, sino los vuelos que dejan constancia</span></a><a href="#vuelos-propios"><span class="indice__num">09</span><span class="indice__titulo">Procesado de los vuelos de tus equipos</span><span class="indice__sub">La frecuencia que pide una obra grande, sin un piloto cada día</span></a><a href="#zonas-verdes"><span class="indice__num">10</span><span class="indice__titulo">Zonas verdes: inventario y eficiencia del riego</span><span class="indice__sub">Mantenimiento de parques, jardines y urbanizaciones</span></a><a href="#video"><span class="indice__num">11</span><span class="indice__titulo">Vídeo y fotografía aérea</span><span class="indice__sub">Promociones, proyectos y eventos</span></a><a href="#agricultura"><span class="indice__num">12</span><span class="indice__titulo">Agricultura y ganadería</span><span class="indice__sub">Datos aéreos para decidir en la parcela</span></a></div>
     </div>
   </section>
 
-  <!-- SOBRE NOSOTROS -->
-  <section id="nosotros" class="relative py-24 lg:py-32">
-    <div class="glow-line w-full mb-24"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center">
-        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">05 / Sobre nosotros</p>
-        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8" style="transition-delay:0.1s">
-          Sobre Altamira Drones
-        </h2>
-        <div class="fade-up space-y-6 text-slate-400 leading-relaxed text-lg" style="transition-delay:0.2s">
-          <p>
-            Altamira Drones es una empresa con base en Madrid dedicada a los servicios profesionales con drones para entornos urbanos y rurales.
-          </p>
-          <p>
-            Trabajamos en proyectos vinculados a inspección técnica, fotogrametría, observación aérea, análisis territorial y aplicaciones para agricultura y ganadería, con una propuesta orientada a la calidad técnica, la innovación y el desarrollo de soluciones adaptadas a cada necesidad.
-          </p>
-          <p>
-            La empresa apuesta por una visión moderna del sector dron, en la que la captación de datos, la interpretación técnica y la innovación aplicada forman parte de un mismo servicio.
-          </p>
-          <p>
-            Desde Madrid, operamos con vocación nacional e internacional, apoyando proyectos, alianzas y colaboración técnica en España y Europa.
-          </p>
+  <section class="seccion">
+    <div class="contenedor">
+      <article class="servicio" id="termografia-envolventes">
+        <div class="servicio__texto aparece">
+          <div class="num">01</div>
+          <h3>Termografía exterior de envolventes</h3>
+          <p class="sub">Edificios Passivhaus y de alta eficiencia energética</p>
+          <p>Desde el interior, la termografía se hace estancia por estancia: la imagen queda fragmentada, depende del mobiliario y de poder entrar en cada vivienda. Desde fuera, el dron ve la envolvente completa y continua, con las plantas altas, los frentes de forjado, los encuentros con la cubierta y los petos, que desde el suelo apenas se ven.</p><p>En un Passivhaus los defectos son pequeños y localizados, y es justo ahí donde importa tener la fachada entera en una sola lectura: un frente de forjado sin rotura de puente térmico o un tramo con el aislamiento mal colocado aparecen como una línea o una mancha más caliente que el resto del paramento.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Puentes térmicos en forjados, pilares, dinteles y carpinterías</li><li>Discontinuidades o faltas de aislamiento en fachada y cubierta</li><li>Fugas de aire por la envolvente, con el método combinado</li></ul>
+          <dl class="ficha"><div><dt>Entregable</dt><dd>Mosaico térmico de cada fachada y de la cubierta, anomalías numeradas e informe</dd></div><div><dt>Cuándo</dt><dd>De noviembre a marzo, al amanecer o de noche</dd></div></dl>
+          <div class="subbloque"><h4>Método combinado con el blower door</h4><p class="sub">Termografía exterior durante el ensayo en sobrepresión</p><p>El ensayo blower door mide cuánto aire se escapa del edificio, pero no dice por dónde. Si el ensayo se hace en sobrepresión mientras volamos, el aire interior, más caliente, sale por cada fuga y calienta la fachada justo en ese punto. Desde fuera, cada fuga se ve como una mancha caliente localizada.</p><p>Se aprovecha una visita que ya está prevista, no hay que entrar en las viviendas y el resultado es un plano de fachada con las fugas señaladas, listo para corregirlas antes de repetir el ensayo.</p></div>
         </div>
-      </div>
-
-      <div class="mt-20 grid md:grid-cols-3 gap-6 fade-up">
-        <div class="text-center p-8 border border-white/5 rounded-xl bg-white/[0.01]">
-          <div class="text-3xl font-bold text-gradient-cyan mb-2">Madrid</div>
-          <p class="text-slate-500 text-sm">Sede central</p>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/esquema-fachada.jpg" alt="Alzado de un bloque de viviendas en térmica, de noche en invierno. 1 Tramo sin aislamiento · 2 Fuga en encuentro de carpintería · 3 Puente térmico en forjado de cubierta · 4 Pilar de esquina" loading="lazy" decoding="async"><figcaption><span class="procedencia">Esquema ilustrativo</span>Alzado de un bloque de viviendas en térmica, de noche en invierno. 1 Tramo sin aislamiento · 2 Fuga en encuentro de carpintería · 3 Puente térmico en forjado de cubierta · 4 Pilar de esquina</figcaption></figure><figure class=""><img src="../img/web/esquema-blower-door.jpg" alt="Sección: ventilador en sobrepresión y dron en el exterior" loading="lazy" decoding="async"><figcaption><span class="procedencia">Esquema ilustrativo</span>Sección: ventilador en sobrepresión y dron en el exterior</figcaption></figure></div>
+      </article>
+      <article class="servicio servicio--inv" id="sate">
+        <div class="servicio__texto aparece">
+          <div class="num">02</div>
+          <h3>Control de calidad del SATE</h3>
+          <p class="sub">Aislamiento por el exterior: durante la obra y en la recepción</p>
+          <p>Los defectos del SATE nacen casi siempre en la colocación: una junta abierta entre placas, tacos sin su tapón aislante, un encuentro con la carpintería o con el zócalo mal resuelto. Con el revestimiento aplicado dejan de verse y salen en el blower door, cuando corregirlos cuesta mucho más.</p><p>Un vuelo térmico antes del acabado revisa cada paño entero: los tacos forman una retícula de puntos y cualquier junta o hueco sin aislar la rompe. Con el sistema terminado, la misma inspección localiza despegues, humedad dentro del sistema y fisuras que dibujan las juntas de las placas.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Vuelo térmico de cada paño antes del revestimiento</li><li>Recepción del sistema terminado: despegues, humedad y fisuras</li><li>En rehabilitación, medición de fachadas y huecos para presupuestar</li></ul>
+          <dl class="ficha"><div><dt>Entregable</dt><dd>Alzados con cada defecto localizado, para corregir antes de cerrar el paño</dd></div><div><dt>Cuándo</dt><dd>Antes del acabado, con salto térmico; los despegues, con la fachada enfriándose tras el sol</dd></div></dl>
+          
         </div>
-        <div class="text-center p-8 border border-white/5 rounded-xl bg-white/[0.01]">
-          <div class="text-3xl font-bold text-gradient-cyan mb-2">Europa</div>
-          <p class="text-slate-500 text-sm">Área de operación</p>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/esquema-sate.jpg" alt="Paño de SATE antes del revestimiento, de noche en invierno. 1 Tacos sin tapón aislante · 2 Junta abierta entre placas · 3 Encuentro con carpintería sin aislar · 4 Arranque sin rotura de puente térmico" loading="lazy" decoding="async"><figcaption><span class="procedencia">Esquema ilustrativo</span>Paño de SATE antes del revestimiento, de noche en invierno. 1 Tacos sin tapón aislante · 2 Junta abierta entre placas · 3 Encuentro con carpintería sin aislar · 4 Arranque sin rotura de puente térmico</figcaption></figure></div>
+      </article>
+      <article class="servicio" id="cubiertas">
+        <div class="servicio__texto aparece">
+          <div class="num">03</div>
+          <h3>Humedad en cubiertas planas</h3>
+          <p class="sub">Localizar el agua antes de levantar la cubierta</p>
+          <p>El agua atrapada bajo la impermeabilización almacena el calor del día. Al anochecer, las zonas mojadas se enfrían más despacio que las secas y aparecen en la imagen térmica como manchas de contorno irregular, normalmente alrededor de sumideros, petos y pasos de instalaciones.</p><p>Con el plano de humedades, la reparación se dirige: se abre solo donde hace falta. Es útil en la recepción de obra, en postventa y para resolver reclamaciones de garantía con un documento objetivo.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Delimitación de las zonas húmedas sobre el plano de cubierta</li><li>Superficie afectada en m²</li><li>Recomendación de puntos de cata</li></ul>
+          <dl class="ficha"><div><dt>Cuándo</dt><dd>Al anochecer, tras un día soleado y con la cubierta seca en superficie</dd></div><div><dt>Importante</dt><dd>La térmica indica dónde está el agua, no siempre por dónde entra: se confirma con medidor o cata</dd></div></dl>
+          
         </div>
-        <div class="text-center p-8 border border-white/5 rounded-xl bg-white/[0.01]">
-          <div class="text-3xl font-bold text-gradient-cyan mb-2">España</div>
-          <p class="text-slate-500 text-sm">Área de operación</p>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/esquema-cubierta.jpg" alt="Planta de cubierta plana al anochecer. 1 Agua atrapada alrededor del sumidero · 2 Humedad junto al peto" loading="lazy" decoding="async"><figcaption><span class="procedencia">Esquema ilustrativo</span>Planta de cubierta plana al anochecer. 1 Agua atrapada alrededor del sumidero · 2 Humedad junto al peto</figcaption></figure></div>
+      </article>
+    </div>
+    <div class="banda aparece"><figure class=""><img src="../img/web/cubiertas.jpg" alt="Cubiertas planas transitables en edificación residencial" loading="lazy" decoding="async"><figcaption>Cubiertas planas transitables en edificación residencial</figcaption></figure></div>
+    <div class="contenedor">
+      <article class="servicio servicio--inv" id="fotovoltaica">
+        <div class="servicio__texto aparece">
+          <div class="num">04</div>
+          <h3>Inspección termográfica de placas solares</h3>
+          <p class="sub">Recepción de la instalación y revisiones periódicas</p>
+          <p>Un módulo o una serie que no produce no da ningún aviso: se nota en la factura meses después. Con el sol dando de lleno y la instalación produciendo, cada tipo de fallo deja un patrón térmico reconocible: una célula caliente, un tercio del módulo más caliente por un diodo de bypass averiado, una fila entera a otra temperatura porque un string está desconectado.</p><p>Hacerlo al entregar el edificio permite comprobar que la instalación funciona antes del traspaso a la propiedad, y repetirlo durante la garantía evita discusiones sobre cuándo apareció el defecto.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Puntos calientes, módulos rotos y diodos de bypass averiados</li><li>Strings desconectados, suciedad y sombras</li><li>Priorización de cada módulo afectado</li></ul>
+          <dl class="ficha"><div><dt>Entregable</dt><dd>Plano de la instalación con cada módulo identificado, tipo de fallo y prioridad</dd></div><div><dt>Cuándo</dt><dd>Horas centrales de días despejados, todo el año</dd></div></dl>
+          
         </div>
-      </div>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/fotovoltaica.jpg" alt="Instalación fotovoltaica en cubierta de bloque residencial" loading="lazy" decoding="async"><figcaption>Instalación fotovoltaica en cubierta de bloque residencial</figcaption></figure><figure class=""><img src="../img/web/esquema-fotovoltaica.jpg" alt="Campo fotovoltaico en térmica. 1 Punto caliente en célula · 2 Diodo de bypass · 3 String desconectado · 4 Módulo con rotura" loading="lazy" decoding="async"><figcaption><span class="procedencia">Esquema ilustrativo</span>Campo fotovoltaico en térmica. 1 Punto caliente en célula · 2 Diodo de bypass · 3 String desconectado · 4 Módulo con rotura</figcaption></figure></div>
+      </article>
+      <article class="servicio" id="fachadas">
+        <div class="servicio__texto aparece">
+          <div class="num">05</div>
+          <h3>Inspección visual de fachadas y cubiertas</h3>
+          <p class="sub">Patologías sin andamios ni plataformas elevadoras</p>
+          <p>Grietas, desprendimientos, tejas desplazadas, remates mal resueltos, humedades visibles. El dron se acerca a cualquier punto de la fachada o de la cubierta y lo documenta con detalle milimétrico, sin montar medios auxiliares y sin riesgo para nadie.</p><p>Cada patología queda fotografiada, numerada y situada sobre la ortofoto o el alzado, de modo que el informe sirve igual para presupuestar la reparación que para la postventa, la ITE o el IEE.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Vuelo de conjunto y tomas cercanas dirigidas a cada patología</li><li>Ortofoto de cubierta o alzado de fachada</li><li>Informe fotográfico por zonas, numerado y georreferenciado</li></ul>
+          <dl class="ficha"><div><dt>Detalle</dt><dd>Hasta 2 mm por píxel en tomas cercanas</dd></div><div><dt>Útil para</dt><dd>Postventa, reparaciones, ITE e IEE</dd></div></dl>
+          
+        </div>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/patologia-tejado.jpg" alt="Cubierta de teja en Madrid: tejas desplazadas" loading="lazy" decoding="async"><figcaption><span class="procedencia">Trabajo realizado por Altamira Drones</span>Cubierta de teja en Madrid: tejas desplazadas</figcaption></figure><div class="duo"><figure class=""><img src="../img/web/orto-cubierta.jpg" alt="Ortofoto de la cubierta, ~2 mm/píxel" loading="lazy" decoding="async"><figcaption><span class="procedencia">Trabajo realizado por Altamira Drones</span>Ortofoto de la cubierta, ~2 mm/píxel</figcaption></figure><figure class=""><img src="../img/web/patologia-alero.jpg" alt="Encuentro de alero con el paramento" loading="lazy" decoding="async"><figcaption><span class="procedencia">Trabajo realizado por Altamira Drones</span>Encuentro de alero con el paramento</figcaption></figure></div></div>
+      </article>
+      <article class="servicio servicio--inv" id="fotogrametria">
+        <div class="servicio__texto aparece">
+          <div class="num">06</div>
+          <h3>Fotogrametría y modelado 3D</h3>
+          <p class="sub">Modelos medibles, ortofotos y nubes de puntos</p>
+          <p>A partir de cientos de fotografías solapadas se reconstruye la geometría real de un edificio o de un terreno: un modelo 3D texturizado sobre el que se miden distancias, superficies y volúmenes, una ortofoto sin deformaciones y una nube de puntos densa de la que se sacan plantas, alzados y secciones.</p><p>Es la base de casi todo lo demás: del levantamiento de un edificio existente antes de rehabilitarlo, de la documentación final de obra y de la comparación entre dos momentos de una misma obra.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Modelo 3D texturizado y visor web para medir desde el navegador</li><li>Ortofoto y nube de puntos</li><li>Plantas, alzados y secciones sobre la nube</li></ul>
+          <dl class="ficha"><div><dt>Formatos</dt><dd>OBJ, LAS / LAZ, GeoTIFF y DXF, compatibles con CAD, BIM y SIG</dd></div><div><dt>Precisión</dt><dd>Centimétrica, con puntos de control en campo</dd></div></dl>
+          
+        </div>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/san-leonardo-3d.jpg" alt="Modelo 3D texturizado de la espadaña de San Leonardo y su entorno" loading="lazy" decoding="async"><figcaption><span class="procedencia">Trabajo realizado por Altamira Drones</span>Modelo 3D texturizado de la espadaña de San Leonardo y su entorno</figcaption></figure></div>
+      </article>
+      <article class="servicio" id="topografia">
+        <div class="servicio__texto aparece">
+          <div class="num">07</div>
+          <h3>Topografía y cubicaciones</h3>
+          <p class="sub">Movimiento de tierras: desmonte, terraplén y acopios</p>
+          <p>El modelo digital del terreno que sale del vuelo permite calcular volúmenes con precisión centimétrica en una fracción del tiempo que exige un levantamiento a pie, y sin que nadie tenga que caminar entre la maquinaria.</p><p>Comparando el vuelo del mes con el anterior, o con el terreno de proyecto, se obtiene el volumen movido en el periodo: un dato objetivo para certificar a la propiedad y para controlar lo que certifican las subcontratas.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Modelo digital del terreno y curvas de nivel</li><li>Volúmenes de desmonte, terraplén y acopios</li><li>Comparación entre fechas o frente a proyecto</li></ul>
+          <dl class="ficha"><div><dt>Entregable</dt><dd>Informe de cubicación, MDT (GeoTIFF) y curvas (DXF)</dd></div><div><dt>Frecuencia</dt><dd>Mensual, al certificar</dd></div></dl>
+          
+        </div>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/movimiento-tierras.jpg" alt="Excavación con maquinaria en movimiento de tierras" loading="lazy" decoding="async"><figcaption>Excavación con maquinaria en movimiento de tierras</figcaption></figure><figure class=""><img src="../img/web/mdt-curvas.jpg" alt="Modelo digital del terreno con curvas de nivel" loading="lazy" decoding="async"><figcaption><span class="procedencia">Trabajo realizado por Altamira Drones</span>Modelo digital del terreno con curvas de nivel</figcaption></figure></div>
+      </article>
+      <article class="servicio servicio--inv" id="obra">
+        <div class="servicio__texto aparece">
+          <div class="num">08</div>
+          <h3>Obra: los momentos que hay que documentar</h3>
+          <p class="sub">No un vuelo diario, sino los vuelos que dejan constancia</p>
+          <p>En una obra grande el día a día ya lo cubren los propios equipos. Lo que una foto no da es un registro medible, fechado y georreferenciado en los momentos en que ese dato vale dinero.</p><p>Antes de empezar, el acta de estado previo de edificios colindantes, viales y aceras: la mejor defensa ante reclamaciones de terceros. Antes de tapar, las redes enterradas, el armado de losas o las impermeabilizaciones, que después no se vuelven a ver. Y al terminar, la documentación final de la obra para la propiedad, el archivo y el mantenimiento.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Acta de estado previo del entorno</li><li>Vuelos de hito antes de tapar</li><li>Documentación final (as-built aéreo)</li></ul>
+          <dl class="ficha"><div><dt>Entregable</dt><dd>Modelo 3D medible y ortofoto de cada hito, en visor web</dd></div><div><dt>Frecuencia</dt><dd>Por hitos, a demanda del jefe de obra</dd></div></dl>
+          
+        </div>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/obra-estructura.jpg" alt="Obra de edificación en fase de estructura" loading="lazy" decoding="async"><figcaption>Obra de edificación en fase de estructura</figcaption></figure></div>
+      </article>
+    </div>
+    <div class="banda aparece"><figure class=""><img src="../img/web/obra-cenital.jpg" alt="Obra de edificación con maquinaria y acopios, vista cenital" loading="lazy" decoding="async"><figcaption>Obra de edificación con maquinaria y acopios, vista cenital</figcaption></figure></div>
+    <div class="contenedor">
+      <article class="servicio" id="vuelos-propios">
+        <div class="servicio__texto aparece">
+          <div class="num">09</div>
+          <h3>Procesado de los vuelos de tus equipos</h3>
+          <p class="sub">La frecuencia que pide una obra grande, sin un piloto cada día</p>
+          <p>Muchos capataces ya sacan fotos con su propio dron, pero las fotos sueltas no permiten medir. La propuesta es aprovechar esos vuelos: cargamos en su dron una ruta automática, preparada para cada obra, que se lanza con un botón y tarda unos minutos.</p><p>Ellos vuelan cuando lo necesitan y nosotros procesamos las imágenes y devolvemos un modelo 3D medible en un visor web. El equipo de obra tiene el registro con la frecuencia que quiera, y nosotros ponemos el procesado y el control de calidad del dato.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Diseño de la ruta de vuelo de cada obra</li><li>Formación breve a los capataces</li><li>Procesado, visor web y archivo de cada vuelo</li></ul>
+          <dl class="ficha"><div><dt>Requisito</dt><dd>Dron compatible con misiones automáticas; lo revisamos obra por obra</dd></div><div><dt>Plazo</dt><dd>Modelo disponible en 24–48 h tras el vuelo</dd></div></dl>
+          
+        </div>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/dron-compacto.jpg" alt="Dron compacto del tipo que ya usan muchos equipos de obra" loading="lazy" decoding="async"><figcaption>Dron compacto del tipo que ya usan muchos equipos de obra</figcaption></figure></div>
+      </article>
+      <article class="servicio servicio--inv" id="zonas-verdes">
+        <div class="servicio__texto aparece">
+          <div class="num">10</div>
+          <h3>Zonas verdes: inventario y eficiencia del riego</h3>
+          <p class="sub">Mantenimiento de parques, jardines y urbanizaciones</p>
+          <p>Mantener bien una zona verde exige saber qué hay, dónde está y dónde sobra o falta agua. Desde el aire se levanta un inventario georreferenciado del arbolado y de las superficies de césped, arbustos y pavimentos, que es la base de cualquier contrato de mantenimiento.</p><p>Con la cámara térmica se localizan las fugas de riego y las zonas encharcadas, y se detecta el estrés hídrico: una copa más caliente que las de alrededor es una planta que no está transpirando. Con esos mapas se reajustan sectores y tiempos de riego.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Inventario de arbolado y superficies</li><li>Fugas de riego y zonas encharcadas</li><li>Mapa de vigor y de estrés hídrico</li></ul>
+          <dl class="ficha"><div><dt>Entregable</dt><dd>Capa SIG del inventario e informe con propuestas de mejora del riego</dd></div><div><dt>Cuándo</dt><dd>Primavera y verano</dd></div></dl>
+          
+        </div>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/parque.jpg" alt="Parque urbano con arbolado, praderas y láminas de agua" loading="lazy" decoding="async"><figcaption>Parque urbano con arbolado, praderas y láminas de agua</figcaption></figure></div>
+      </article>
+      <article class="servicio" id="video">
+        <div class="servicio__texto aparece">
+          <div class="num">11</div>
+          <h3>Vídeo y fotografía aérea</h3>
+          <p class="sub">Promociones, proyectos y eventos</p>
+          <p>Vídeo aéreo 4K y fotografía de un edificio terminado y de su entorno: vistas, accesos, dimensiones de la parcela y ubicación, lo que una cámara en tierra no puede enseñar. Modelos 3D y panorámicas 360° para recorrer la promoción desde casa.</p><p>También grabamos eventos al aire libre y dejamos el registro final de la obra terminada para las referencias de cada estudio o constructora.</p>
+          <span class="etiqueta">Qué incluye</span>
+          <ul class="lista-guion"><li>Vídeo aéreo 4K estabilizado y con corrección de color</li><li>Fotografía aérea y de fachada</li><li>Modelo 3D interactivo y panorámicas 360°</li></ul>
+          <dl class="ficha"><div><dt>Entrega</dt><dd>Archivos para web, redes y portales inmobiliarios</dd></div></dl>
+          
+        </div>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/promocion.jpg" alt="Promoción residencial y su entorno" loading="lazy" decoding="async"><figcaption>Promoción residencial y su entorno</figcaption></figure></div>
+      </article>
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="relative py-24 lg:py-32">
-    <div class="glow-line w-full mb-24"></div>
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-[120px]"></div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <p class="fade-up text-xs font-medium text-cyan-400 tracking-widest uppercase mb-4">06 / Contacto</p>
-        <h2 class="fade-up text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="transition-delay:0.1s">
-          Contacta con nosotros
-        </h2>
-        <p class="fade-up text-slate-400 text-lg" style="transition-delay:0.2s">
-          Si desea más información sobre nuestros servicios, colaboraciones o proyectos, puede contactar directamente con Altamira Drones.
-        </p>
+  <section class="seccion seccion--alt" id="agricultura">
+    <div class="contenedor">
+      <div class="servicio">
+        <div class="servicio__texto aparece">
+          <div class="num">12</div>
+          <h2 class="h-servicio">Agricultura y ganadería</h2>
+          <p class="sub">Datos aéreos para decidir en la parcela</p>
+          <p>Nuestro origen está en la ingeniería agronómica. Con cámaras multiespectrales y térmicas medimos el estado del cultivo, delimitamos zonas con comportamiento distinto y convertimos esa variabilidad en mapas de manejo: dónde tratar, dónde revisar el riego, dónde muestrear.</p><p>En ganadería, el dron permite supervisar grandes extensiones, revisar cercados, puntos de agua e infraestructuras y apoyar recuentos sin recorrer la finca a pie.</p>
+        </div>
+        <div class="servicio__figuras aparece"><figure class=""><img src="../img/web/vinedo-vigor.jpg" alt="Vigor por volumen de copa en un viñedo, calculado con imagen de dron" loading="lazy" decoding="async"><figcaption><span class="procedencia">Trabajo realizado por Altamira Drones</span>Vigor por volumen de copa en un viñedo, calculado con imagen de dron</figcaption></figure><figure class=""><img src="../img/web/vinedo-prescripcion.jpg" alt="Prescripción de tratamiento proporcional al volumen de copa en el mismo viñedo" loading="lazy" decoding="async"><figcaption><span class="procedencia">Trabajo realizado por Altamira Drones</span>Prescripción de tratamiento proporcional al volumen de copa en el mismo viñedo</figcaption></figure></div>
       </div>
+      <div class="grupos aparece"><div><span class="etiqueta">Agricultura</span><ul class="lista-guion"><li>Índices espectrales (NDVI, SAVI y otros) y mapas de vigor</li><li>Mapas de prescripción para tratamientos y abonado variable</li><li>Mapeo de parcelas y zonas diferenciales para muestreo</li><li>Detección temprana de estrés e incidencias</li><li>Apoyo al riego: zonas con comportamiento anómalo</li><li>Aplicación aérea de productos dentro del marco normativo</li></ul></div><div><span class="etiqueta">Ganadería</span><ul class="lista-guion"><li>Localización y recuento de animales</li><li>Supervisión de pastos y ocupación del terreno</li><li>Revisión de cercados, puntos de agua e instalaciones</li><li>Monitorización rápida de grandes superficies</li></ul></div></div>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up" style="transition-delay:0.3s">
-        <!-- Email -->
-        <div class="border border-white/5 rounded-xl p-6 bg-white/[0.01] hover:border-cyan-500/20 transition-colors">
-          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
-            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+  <section class="seccion" id="proyectos">
+    <div class="contenedor">
+      <h2 class="titulo-seccion aparece">Proyecto destacado</h2>
+      <div class="proyecto">
+        <div class="aparece">
+          <div class="visor">
+            <model-viewer src="../img/torre-san-leonardo-crop.glb" orientation="0deg -90deg 0deg" camera-orbit="-20deg 68deg 55%" camera-controls auto-rotate auto-rotate-delay="500"
+              rotation-per-second="18deg" environment-image="neutral" shadow-intensity="0.8" loading="lazy"
+              alt="Torre de San Leonardo — 3D"></model-viewer>
+            <span class="visor__nota">Arrastra para girar · rueda para acercar</span>
           </div>
-          <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Email</p>
-          <a href="mailto:altamiradronesrrss@gmail.com" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors break-all py-3 block touch-link">altamiradronesrrss@gmail.com</a>
+          <div class="proyecto__fotos"><figure class=""><img src="../img/web/san-leonardo-foto.jpg" alt="La espadaña desde el dron" loading="lazy" decoding="async"><figcaption><span class="procedencia">Trabajo realizado por Altamira Drones</span>La espadaña desde el dron</figcaption></figure><figure class=""><img src="../img/web/san-leonardo-3d-detalle.jpg" alt="El mismo levantamiento convertido en modelo 3D medible" loading="lazy" decoding="async"><figcaption><span class="procedencia">Trabajo realizado por Altamira Drones</span>El mismo levantamiento convertido en modelo 3D medible</figcaption></figure></div>
         </div>
-
-        <!-- Telefono -->
-        <div class="border border-white/5 rounded-xl p-6 bg-white/[0.01] hover:border-cyan-500/20 transition-colors">
-          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
-            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          </div>
-          <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Teléfono / WhatsApp</p>
-          <a href="tel:+34638099208" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2 touch-link">+34 638 099 208</a>
-          <a href="tel:+34610485116" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2 touch-link">+34 610 485 116</a>
-          <a href="https://wa.me/34638099208" target="_blank" class="inline-flex items-center gap-1.5 text-green-400 text-xs mt-2 py-2 hover:text-green-300 active:text-green-200 transition-colors touch-link">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.34 0-4.512-.767-6.262-2.063l-.438-.333-3.04 1.019 1.019-3.04-.333-.438A9.959 9.959 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            WhatsApp
-          </a>
+        <div class="aparece">
+          <span class="etiqueta">Documentación patrimonial · Marzo 2026</span>
+          <h3 style="font-weight:600;font-size:clamp(24px,2.4vw,30px);margin:14px 0 6px">Torre de San Leonardo</h3>
+          <p class="sub" style="margin-bottom:24px">Hinojosa de Duero, Salamanca — Parque Natural de Arribes del Duero</p>
+          <p>Levantamiento fotogramétrico de la espadaña románica de un despoblado medieval, uno de los últimos vestigios del poblado de San Leonardo, abandonado a principios del siglo XIX. El conjunto de datos deja un registro digital permanente para administraciones, arquitectos e investigadores.</p>
+          <div class="cifras"><div><strong>0,54 cm</strong><span>Resolución en suelo (GSD)</span></div><div><strong>11,7 M</strong><span>Puntos de la nube</span></div><div><strong>86</strong><span>Imágenes procesadas</span></div><div><strong>4,4 ha</strong><span>Superficie cubierta</span></div></div>
+          <p class="sub" style="margin:22px 0 30px;font-size:14px">Ortofoto · Nube de puntos (LAZ) · Modelo 3D texturizado · MDS</p>
+          <a class="boton" href="#contacto">Solicitar un levantamiento →</a>
         </div>
-
-        <!-- Direccion -->
-        <div class="border border-white/5 rounded-xl p-6 bg-white/[0.01] hover:border-cyan-500/20 transition-colors">
-          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
-            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Dirección</p>
-          <a href="https://maps.google.com/?q=Calle+Hermosilla+48+Madrid+Spain" target="_blank" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2">Calle Hermosilla, 48<br>Piso 1, Puerta DC<br>28001 Madrid, España</a>
-        </div>
-
-        <!-- Redes sociales -->
-        <div class="border border-white/5 rounded-xl p-6 bg-white/[0.01] hover:border-cyan-500/20 transition-colors">
-          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
-            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-          </div>
-          <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Redes sociales</p>
-          <a href="https://instagram.com/altamira_drones" target="_blank" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2 touch-link">@altamira_drones</a>
-          <a href="https://youtube.com/@AltamiraDrones" target="_blank" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2 touch-link">YouTube</a>
-          <a href="https://www.linkedin.com/company/altamira-drones" target="_blank" class="text-white text-sm hover:text-cyan-400 active:text-cyan-300 transition-colors block py-2 touch-link">LinkedIn</a>
-        </div>
-      </div>
-
-      <!-- Formulario de contacto -->
-      <div class="mt-12 fade-up" style="transition-delay:0.4s">
-        <div class="max-w-2xl mx-auto border border-white/5 rounded-2xl p-8 bg-white/[0.01] hover:border-cyan-500/10 transition-colors">
-          <h3 class="text-white font-semibold text-lg mb-1">Envíanos un mensaje</h3>
-          <p class="text-slate-500 text-sm mb-6">Te responderemos lo antes posible.</p>
-          <form id="contact-form" class="space-y-4">
-            <input type="hidden" name="_subject" value="Nueva consulta desde la web de Altamira Drones">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-slate-500 text-xs uppercase tracking-wider mb-2">Nombre *</label>
-                <input type="text" name="name" required placeholder="Tu nombre"
-                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/[0.07] transition-colors">
-              </div>
-              <div>
-                <label class="block text-slate-500 text-xs uppercase tracking-wider mb-2">Email *</label>
-                <input type="email" name="email" required placeholder="tu@email.com"
-                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/[0.07] transition-colors">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-slate-500 text-xs uppercase tracking-wider mb-2">Teléfono</label>
-                <input type="tel" name="phone" placeholder="+34 000 000 000"
-                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/[0.07] transition-colors">
-              </div>
-              <div>
-                <label class="block text-slate-500 text-xs uppercase tracking-wider mb-2">Servicio</label>
-                <select name="service"
-                  class="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-cyan-500/50 transition-colors">
-                  <option value="">Selecciona un servicio...</option>
-                  <option value="Inspección urbana">Inspección urbana</option>
-                  <option value="Agricultura y ganadería">Agricultura y ganadería</option>
-                  <option value="I+D / Innovación">I+D / Innovación</option>
-                  <option value="Otro">Otro</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-slate-500 text-xs uppercase tracking-wider mb-2">Mensaje *</label>
-              <textarea name="message" required rows="4" placeholder="Cuéntanos sobre tu proyecto o consulta..."
-                class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/[0.07] transition-colors resize-none"></textarea>
-            </div>
-
-            <button type="submit" id="contact-submit"
-              class="w-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 hover:border-cyan-500/60 text-cyan-400 font-medium py-3 px-6 rounded-lg text-sm transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed">
-              Enviar mensaje
-            </button>
-
-            <div id="contact-result" class="hidden text-center text-sm py-2 px-4 rounded-lg"></div>
-          </form>
-        </div>
-      </div>
-
-      <div class="mt-8 text-center fade-up">
-        <p class="text-slate-600 text-sm">Idiomas de atención: Español e inglés &middot; Ámbito de actuación: España y Europa</p>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/5 py-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center space-x-2.5">
-          <img src="../img/logo-toro.png" alt="Altamira Drones" class="h-7 w-auto" style="filter:invert(1);mix-blend-mode:screen;opacity:0.85;">
-          <span class="text-sm font-medium"><span class="text-white">ALTAMIRA</span><span class="text-cyan-400">DRONES</span></span>
-        </div>
+  <section class="seccion seccion--alt" id="noticias">
+    <div class="contenedor">
+      <h2 class="titulo-seccion aparece">Noticias</h2>
+      <a class="noticia aparece" href="../golf/"><span class="noticia__fecha">21 may. 2026</span><span><h3>Cobertura aérea del XV Campeonato de Golf de Arquitectos de Madrid</h3><p>73 clips en 4K y un vídeo resumen del torneo en la Ciudad Financiera del Banco Santander.</p></span><span class="noticia__flecha">→</span></a>
+    </div>
+  </section>
 
-        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs text-slate-600">
-          <a href="#urbano" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Urbano</a>
-          <a href="#agricultura" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Agricultura</a>
-          <a href="#innovacion" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">I+D+i</a>
-          <a href="#proyectos" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Proyectos</a>
-          <a href="#nosotros" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Nosotros</a>
-          <a href="#contacto" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Contacto</a>
-          <a href="/privacidad/" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Privacidad</a>
-          <a href="/terminos/" class="hover:text-slate-400 transition-colors py-3 px-2 touch-link">Aviso legal</a>
-        </div>
-
-        <p class="text-xs text-slate-700">&copy; 2026 Altamira Drones. Todos los derechos reservados.</p>
+  <section class="seccion" id="nosotros">
+    <div class="contenedor intro">
+      <h2 class="titulo-seccion aparece">Sobre Altamira Drones</h2>
+      <div class="aparece">
+        <p class="lead">Altamira Drones es una empresa con base en Madrid dedicada a los servicios profesionales con dron para el entorno urbano y rural. Unimos la operación aérea con la interpretación técnica: el vuelo es el medio, lo que entregamos es información útil.</p>
+        <p>La I+D+i forma parte del trabajo diario: desarrollamos nuestras propias herramientas de procesado para agricultura de precisión, análisis multiespectral y digitalización del territorio.</p>
+        <div class="cifras" style="grid-template-columns:repeat(3,1fr)"><div><strong>Madrid</strong><span>Sede</span></div><div><strong>España</strong><span>Ámbito de trabajo</span></div><div><strong>Europa</strong><span>Proyectos y colaboraciones</span></div></div>
       </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--alt" id="contacto">
+    <div class="contenedor contacto">
+      <div class="aparece">
+        <h2 class="titulo-seccion">Contacto</h2>
+        <p>Cuéntanos qué necesitas y te respondemos con una propuesta concreta.</p>
+        <div class="datos">
+          <div><span class="etiqueta">Email</span><br><a href="mailto:altamiradronesrrss@gmail.com">altamiradronesrrss@gmail.com</a></div>
+          <div><span class="etiqueta">Teléfono / WhatsApp</span><br><a href="https://wa.me/34638099208">+34 638 099 208</a> · <a href="tel:+34610485116">+34 610 485 116</a></div>
+          <div><span class="etiqueta">Dirección</span><br>Calle Hermosilla 48, 1.º DC · 28001 Madrid</div>
+          <div><span class="etiqueta">Redes</span><br>
+            <a href="https://instagram.com/altamira_drones" target="_blank" rel="noopener">Instagram</a> ·
+            <a href="https://www.youtube.com/@AltamiraDrones" target="_blank" rel="noopener">YouTube</a> ·
+            <a href="https://www.linkedin.com/company/altamira-drones" target="_blank" rel="noopener">LinkedIn</a></div>
+        </div>
+      </div>
+      <form class="formulario aparece" id="formulario" novalidate>
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde altamiradrones.com (ES)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="campo"><label for="f-nombre">Nombre *</label><input id="f-nombre" name="name" required autocomplete="name"></div>
+        <div class="campo"><label for="f-email">Email *</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="campo"><label for="f-tel">Teléfono</label><input id="f-tel" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="campo"><label for="f-servicio">Servicio</label>
+          <select id="f-servicio" name="service"><option value="">Selecciona un servicio</option><option value="Termografía exterior de envolventes">01 · Termografía exterior de envolventes</option><option value="Control de calidad del SATE">02 · Control de calidad del SATE</option><option value="Humedad en cubiertas planas">03 · Humedad en cubiertas planas</option><option value="Inspección termográfica de placas solares">04 · Inspección termográfica de placas solares</option><option value="Inspección visual de fachadas y cubiertas">05 · Inspección visual de fachadas y cubiertas</option><option value="Fotogrametría y modelado 3D">06 · Fotogrametría y modelado 3D</option><option value="Topografía y cubicaciones">07 · Topografía y cubicaciones</option><option value="Obra: los momentos que hay que documentar">08 · Obra: los momentos que hay que documentar</option><option value="Procesado de los vuelos de tus equipos">09 · Procesado de los vuelos de tus equipos</option><option value="Zonas verdes: inventario y eficiencia del riego">10 · Zonas verdes: inventario y eficiencia del riego</option><option value="Vídeo y fotografía aérea">11 · Vídeo y fotografía aérea</option><option value="Agricultura y ganadería">12 · Agricultura y ganadería</option><option value="Otro">Otro</option></select></div>
+        <div class="campo campo--ancho"><label for="f-mensaje">Mensaje *</label><textarea id="f-mensaje" name="message" required></textarea></div>
+        <div class="formulario__pie">
+          <button class="boton" type="submit" id="f-enviar">Enviar mensaje →</button>
+          <small>Al enviar aceptas la <a href="../privacidad/">política de privacidad</a>.</small>
+        </div>
+        <p class="resultado" id="f-resultado" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__fila">
+        <a class="marca" href="#inicio"><img src="../img/web/toro.png" alt="" width="65" height="30"><span>ALTAMIRA DRONES</span></a>
+        <nav><a href="#servicios">Servicios</a><a href="#agricultura">Agricultura</a><a href="#proyectos">Proyectos</a><a href="#noticias">Noticias</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a><a href="../privacidad/">Privacidad</a><a href="../terminos/">Aviso legal</a></nav>
+      </div>
+      <p class="pie__legal">© 2026 Altamira Drones. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <script>
-    // Navbar scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
-        navbar.classList.add('bg-dark-900/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
-      } else {
-        navbar.classList.remove('bg-dark-900/90', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+    const nav = document.getElementById('nav');
+    const boton = document.getElementById('nav-boton');
+    const enlaces = document.getElementById('nav-enlaces');
+    const alScroll = () => nav.classList.toggle('solida', window.scrollY > 40);
+    alScroll();
+    window.addEventListener('scroll', alScroll, { passive: true });
+    const menu = abrir => { nav.classList.toggle('abierta', abrir); boton.setAttribute('aria-expanded', abrir); };
+    boton.addEventListener('click', () => menu(!nav.classList.contains('abierta')));
+    enlaces.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu(false)));
+
+    // Sección activa en el menú
+    const secciones = [...document.querySelectorAll('section[id]')];
+    const vinculos = [...enlaces.querySelectorAll('a[href^="#"]')];
+    const activo = new IntersectionObserver(entradas => {
+      entradas.forEach(e => {
+        if (e.isIntersecting) vinculos.forEach(v => v.classList.toggle('activo', v.getAttribute('href') === '#' + e.target.id));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    secciones.forEach(s => activo.observe(s));
+
+    // Aparición suave
+    const aparece = new IntersectionObserver(entradas => {
+      entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); aparece.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.aparece').forEach(el => aparece.observe(el));
+
+    // Formulario (FormSubmit)
+    const form = document.getElementById('formulario');
+    const res = document.getElementById('f-resultado');
+    const enviar = document.getElementById('f-enviar');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const texto = enviar.textContent;
+      enviar.textContent = 'Enviando…';
+      enviar.disabled = true;
+      try {
+        const r = await fetch('https://formsubmit.co/ajax/altamiradronesrrss@gmail.com', {
+          method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
+        });
+        const d = await r.json();
+        if (!(d.success === true || d.success === 'true')) throw new Error(d.message);
+        res.className = 'resultado ok'; res.textContent = 'Mensaje enviado. Te responderemos lo antes posible.'; form.reset();
+      } catch (err) {
+        res.className = 'resultado error'; res.textContent = 'Algo ha fallado. Inténtalo de nuevo o escríbenos directamente al email.';
       }
+      res.hidden = false;
+      enviar.textContent = texto;
+      enviar.disabled = false;
     });
-
-    // Mobile menu (smooth transition)
-    const mobileBtn = document.getElementById('mobile-btn');
-    const mobileMenuInner = document.getElementById('mobile-menu-inner');
-    const menuIconOpen = document.getElementById('menu-icon-open');
-    const menuIconClose = document.getElementById('menu-icon-close');
-    let menuOpen = false;
-    function toggleMenu(open) {
-      menuOpen = typeof open === 'boolean' ? open : !menuOpen;
-      mobileMenuInner.classList.toggle('open', menuOpen);
-      menuIconOpen.classList.toggle('hidden', menuOpen);
-      menuIconClose.classList.toggle('hidden', !menuOpen);
-      mobileBtn.setAttribute('aria-expanded', menuOpen);
-    }
-    mobileBtn.addEventListener('click', () => toggleMenu());
-    mobileMenuInner.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right').forEach(el => observer.observe(el));
-
-    // Active nav highlight
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => { if (window.scrollY >= section.offsetTop - 200) current = section.getAttribute('id'); });
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-      });
-    });
-
-    // Formulario de contacto
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const btn = document.getElementById('contact-submit');
-        const result = document.getElementById('contact-result');
-        const originalText = btn.textContent;
-        btn.textContent = 'Enviando...';
-        btn.disabled = true;
-        result.className = 'hidden';
-        try {
-          const response = await fetch('https://formsubmit.co/ajax/altamiradronesrrss@gmail.com', {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: new FormData(contactForm)
-          });
-          const data = await response.json();
-          if (data.success === 'true' || data.success === true) {
-            result.className = 'text-center text-sm py-2 px-4 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400';
-            result.textContent = '¡Mensaje enviado! Te responderemos lo antes posible.';
-            contactForm.reset();
-          } else {
-            throw new Error(data.message);
-          }
-        } catch (err) {
-          result.className = 'text-center text-sm py-2 px-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400';
-          result.textContent = 'Algo ha fallado. Por favor, inténtalo de nuevo o escríbenos directamente.';
-        }
-        btn.textContent = originalText;
-        btn.disabled = false;
-      });
-    }
   </script>
-
 </body>
 </html>

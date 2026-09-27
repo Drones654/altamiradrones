@@ -31,28 +31,42 @@ Bilingual (EN/ES), static HTML, hosted on Cloudflare Pages.
 ```
 altamiradrones/
   index.html          # English homepage
-  es/
-    index.html        # Spanish homepage
-  img/
-    drone-hero.jpg    # Hero image
-    drone-hero.png    # Hero image (PNG variant)
-  CLAUDE.md           # This file
-  .gitignore          # Git ignore rules
+  es/index.html       # Spanish homepage
+  golf/index.html     # News: aerial coverage of the architects' golf tournament (ES)
+  privacidad/, terminos/   # Legal pages (ES)
+  css/altamira.css    # Shared stylesheet for every page
+  img/web/            # Optimised images used by the pages (toro.png = logo)
+  img/torre-san-leonardo-crop.glb   # 3D model shown in "Projects"
+  _redirects          # Cloudflare Pages redirects (/golf/gracias/ -> /golf/)
+  CLAUDE.md
 ```
 
-## Page Sections
+## Design system (Sep 2026 redesign)
 
-Both pages have these sections (edit in order):
-1. **Navigation** — logo, menu links, language switcher
-2. **Hero** — main headline, subtitle, CTA buttons, drone image
-3. **Intro** — "What we do" overview
-4. **Sector Cards** — Urban, Agriculture, Innovation links
-5. **Urban Services** — inspection, photogrammetry, etc.
-6. **Agriculture & Livestock** — crops, animals, monitoring
-7. **Innovation / R&D** — focus areas
-8. **About** — company info, locations (Madrid, Europe, USA)
-9. **Contact** — email, phone, address, social links
-10. **Footer** — logo, nav links, copyright
+Same look as the Arquivir portfolio and the Geoxa dossier: white background,
+Segoe UI Light / Semibold (Open Sans fallback), rust red `#8C2418`, greys
+`#6E6E6E` / `#9B9B9B`, thin rules, numbered services (01, 02...) and large photos.
+All tokens live at the top of `css/altamira.css`.
+
+Image captions state where each image comes from:
+- `Trabajo realizado por Altamira Drones` / `Work by Altamira Drones` for our own work
+- `Esquema ilustrativo` / `Illustrative diagram` for the thermal diagrams
+- Pexels stock photos carry only a descriptive caption
+Do NOT use Víctor de la Fuente's photos on the website.
+
+## Page Sections (homepages)
+
+1. **Navigation** — logo, anchors, ES/EN switch (white over the hero, solid on scroll)
+2. **Hero** — full-bleed photo, headline, CTA
+3. **Intro** — what we do + how we work
+4. **Services index** — numbered list 01–12
+5. **Services 01–11** — each: number, title, text, "what's included", fact sheet, images
+6. **12 Agriculture & livestock**
+7. **Featured project** — San Leonardo 3D viewer (`orientation="0deg -90deg 0deg"`: the model is Z-up)
+8. **News** — links to /golf/
+9. **About**
+10. **Contact** — FormSubmit form (`formsubmit.co/ajax/altamiradronesrrss@gmail.com`)
+11. **Footer**
 
 ## Contact Info (current)
 
@@ -71,16 +85,16 @@ Both pages have these sections (edit in order):
 3. Run: `git add -A && git commit -m "update text" && git push`
 
 ### Add a social media link
-1. Find the "Social" card in the Contact section (~line 668 in index.html)
+1. Find the "Redes" / "Social" row in the Contact section
 2. Add a new `<a>` tag following the existing pattern
 3. Update both EN and ES files
 4. Commit and push
 
 ### Add an image
-1. Put image in `img/` folder
+1. Resize (max ~1800 px wide, JPEG quality ~80) and put it in `img/web/`
 2. Reference in HTML:
-   - From `index.html`: `src="img/photo.jpg"`
-   - From `es/index.html`: `src="../img/photo.jpg"`
+   - From `index.html`: `src="img/web/photo.jpg"`
+   - From `es/index.html`: `src="../img/web/photo.jpg"`
 3. Commit and push
 
 ### Change contact info
@@ -90,10 +104,11 @@ Both pages have these sections (edit in order):
 
 ## Tech Stack
 
-- **HTML + Tailwind CSS** (loaded from CDN — no install needed)
-- **Inter font** (Google Fonts)
+- **Plain HTML + one stylesheet** (`css/altamira.css`) — no Tailwind any more
+- **Segoe UI** (Windows) with **Open Sans** fallback (Google Fonts)
+- **model-viewer** from jsDelivr for the 3D model
 - **No build step** — plain HTML files
-- **No frameworks** — vanilla HTML with Tailwind utility classes
+- **No frameworks** — vanilla HTML and a few lines of JS
 - **Responsive** — works on mobile and desktop
 
 ## Two Languages

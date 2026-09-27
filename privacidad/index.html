@@ -7,57 +7,42 @@
   <meta name="description" content="Política de privacidad y protección de datos de Altamira Drones: qué datos recogemos, para qué, durante cuánto tiempo y cómo ejercer tus derechos.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://altamiradrones.com/privacidad/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9992;</text></svg>">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta property="og:title" content="Política de Privacidad — Altamira Drones">
+  <meta property="og:description" content="Política de privacidad y protección de datos de Altamira Drones: qué datos recogemos, para qué, durante cuánto tiempo y cómo ejercer tus derechos.">
+  <meta property="og:url" content="https://altamiradrones.com/privacidad/">
+  <meta property="og:image" content="https://altamiradrones.com/img/web/portada.jpg">
+  <link rel="icon" type="image/png" href="/img/web/toro.png">
+  <meta name="theme-color" content="#8C2418">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-          colors: {
-            brand: { 50:'#ecfeff', 100:'#cffafe', 200:'#a5f3fc', 300:'#67e8f9', 400:'#22d3ee', 500:'#06b6d4', 600:'#0891b2', 700:'#0e7490', 800:'#155e75', 900:'#164e63' },
-            ink: { 900:'#060a12', 800:'#0b1220' }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body { background:#060a12; }
-    .prosa h2 { font-size:1.15rem; font-weight:600; color:#ecfeff; margin:2.5rem 0 .85rem; }
-    .prosa h3 { font-size:.95rem; font-weight:600; color:#a5f3fc; margin:1.6rem 0 .5rem; }
-    .prosa p, .prosa li { color:#94a3b8; line-height:1.75; }
-    .prosa p { margin-bottom:1rem; }
-    .prosa ul { margin:0 0 1rem 1.15rem; list-style:disc; }
-    .prosa li { margin-bottom:.4rem; }
-    .prosa a { color:#22d3ee; text-decoration:underline; text-underline-offset:2px; }
-    .prosa strong { color:#cffafe; font-weight:600; }
-    .prosa table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
-    .prosa th { text-align:left; color:#a5f3fc; font-weight:600; padding:.6rem .75rem; border-bottom:1px solid #1e293b; }
-    .prosa td { color:#94a3b8; padding:.6rem .75rem; border-bottom:1px solid #111c2e; vertical-align:top; }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/altamira.css">
 </head>
-<body class="font-sans antialiased">
+<body>
 
-  <header class="border-b border-slate-800/60">
-    <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="/es/" class="flex items-center gap-3 group">
-        <span class="text-brand-500 text-lg">&#9992;</span>
-        <span class="text-slate-100 font-semibold tracking-tight group-hover:text-brand-300 transition">Altamira Drones</span>
+  <header class="nav clara" id="nav">
+    <div class="contenedor nav__fila">
+      <a class="marca" href="/es/" aria-label="Altamira Drones">
+        <img class="toro-rojo" src="/img/web/toro.png" alt="" width="65" height="30">
+        <span>ALTAMIRA DRONES</span>
       </a>
-      <a href="/es/" class="text-sm text-slate-400 hover:text-brand-300 transition">Volver al inicio</a>
+      <button class="nav__boton" id="nav-boton" aria-label="Menú" aria-expanded="false" aria-controls="nav-enlaces">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__enlaces" id="nav-enlaces"><a href="/es/#servicios">Servicios</a><a href="/es/#agricultura">Agricultura</a><a href="/es/#proyectos">Proyectos</a><a href="/es/#noticias">Noticias</a><a href="/es/#nosotros">Nosotros</a><a href="/es/#contacto">Contacto</a><span class="idioma"><strong>ES</strong> / <a href="/" hreflang="en">EN</a></span></nav>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-6 py-14">
-
-    <p class="text-xs uppercase tracking-[0.18em] text-brand-500 mb-3">Información legal</p>
-    <h1 class="text-3xl sm:text-4xl font-bold text-slate-50 tracking-tight">Política de Privacidad</h1>
-    <p class="mt-4 text-slate-400">Última actualización: 8 de septiembre de 2026</p>
-
-    <div class="prosa mt-10">
+  <main>
+    <section class="cabecera">
+      <div class="contenedor">
+        <p class="etiqueta">Información legal</p>
+        <h1>Política de Privacidad</h1>
+        <p class="sub">Última actualización: 8 de septiembre de 2026</p>
+      </div>
+    </section>
+    <div class="contenedor">
+      <div class="prosa">
 
       <p>Esta política explica qué datos personales tratamos cuando usas este sitio web
       o te pones en contacto con nosotros, con qué finalidad, durante cuánto tiempo y
@@ -65,13 +50,13 @@
       (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD).</p>
 
       <h2>1. Quién es el responsable del tratamiento</h2>
-      <table>
+      <div class="tabla-scroll"><table>
         <tr><th>Responsable</th><td>ALTAMIRA DRONES, S.L.</td></tr>
         <tr><th>CIF</th><td>B26781138</td></tr>
         <tr><th>Domicilio</th><td>Calle Hermosilla 48, Piso 1, Puerta DC — 28001 Madrid (España)</td></tr>
         <tr><th>Correo electrónico</th><td><a href="mailto:altamiradronesrrss@gmail.com">altamiradronesrrss@gmail.com</a></td></tr>
         <tr><th>Teléfono</th><td>+34 638 099 208</td></tr>
-      </table>
+      </table></div>
 
       <h2>2. Qué datos tratamos y por qué</h2>
 
@@ -114,15 +99,15 @@
       están fuera del Espacio Económico Europeo; en esos casos las transferencias se
       amparan en las Cláusulas Contractuales Tipo aprobadas por la Comisión Europea o
       en una decisión de adecuación.</p>
-      <table>
+      <div class="tabla-scroll"><table>
         <tr><th>Proveedor</th><th>Para qué</th><th>Qué recibe</th></tr>
         <tr><td>Cloudflare</td><td>Alojamiento y distribución del sitio</td><td>Datos técnicos de conexión</td></tr>
         <tr><td>FormSubmit</td><td>Envío del formulario de contacto</td><td>Los datos del formulario</td></tr>
         <tr><td>Web3Forms</td><td>Envío de formularios de eventos</td><td>Los datos del formulario</td></tr>
         <tr><td>Google (Gmail)</td><td>Recepción y gestión del correo</td><td>El contenido de tu mensaje</td></tr>
         <tr><td>Google Fonts</td><td>Tipografía del sitio</td><td>Dirección IP al cargar la fuente</td></tr>
-        <tr><td>Tailwind CDN</td><td>Estilos del sitio</td><td>Dirección IP al cargar el recurso</td></tr>
-      </table>
+        <tr><td>jsDelivr</td><td>Visor del modelo 3D</td><td>Dirección IP al cargar el recurso</td></tr>
+      </table></div>
       <p>Fuera de estos casos, <strong>no cedemos tus datos a terceros</strong> salvo
       obligación legal.</p>
 
@@ -156,17 +141,24 @@
       aplicable. La fecha de la última revisión figura al principio del documento.</p>
 
     </div>
+    </div>
   </main>
 
-  <footer class="border-t border-slate-800/60 mt-10">
-    <div class="max-w-3xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-slate-500">&copy; 2026 Altamira Drones, S.L.</p>
-      <nav class="flex gap-6 text-sm">
-        <a href="/es/" class="text-slate-400 hover:text-brand-300 transition">Inicio</a>
-        <a href="/terminos/" class="text-slate-400 hover:text-brand-300 transition">Condiciones del servicio</a>
-      </nav>
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__fila">
+        <a class="marca" href="/es/"><img src="/img/web/toro.png" alt="" width="65" height="30"><span>ALTAMIRA DRONES</span></a>
+        <nav><a href="/es/#servicios">Servicios</a><a href="/es/#agricultura">Agricultura</a><a href="/es/#proyectos">Proyectos</a><a href="/es/#noticias">Noticias</a><a href="/es/#nosotros">Nosotros</a><a href="/es/#contacto">Contacto</a><a href="/privacidad/">Privacidad</a><a href="/terminos/">Aviso legal</a></nav>
+      </div>
+      <p class="pie__legal">© 2026 Altamira Drones, S.L. Todos los derechos reservados.</p>
     </div>
   </footer>
 
+  <script>
+    const nav = document.getElementById('nav');
+    const boton = document.getElementById('nav-boton');
+    const menu = abrir => { nav.classList.toggle('abierta', abrir); boton.setAttribute('aria-expanded', abrir); };
+    boton.addEventListener('click', () => menu(!nav.classList.contains('abierta')));
+  </script>
 </body>
 </html>
