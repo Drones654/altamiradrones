@@ -62,7 +62,7 @@ Do NOT use Víctor de la Fuente's photos on the website.
 4. **Services index** — numbered list 01–12
 5. **Services 01–11** — each: number, title, text, "what's included", fact sheet, images
 6. **12 Agriculture & livestock**
-7. **Featured project** — San Leonardo 3D viewer (`orientation="0deg -90deg 0deg"`: the model is Z-up)
+7. **Examples of our work** (`#ejemplos` / `#examples`) — San Leonardo 3D viewer, vineyard (do NOT name the municipality), Madrid roof, golf. San Leonardo 3D viewer (`orientation="0deg -90deg 0deg"`: the model is Z-up)
 8. **News** — links to /golf/
 9. **About**
 10. **Contact** — FormSubmit form (`formsubmit.co/ajax/altamiradronesrrss@gmail.com`)

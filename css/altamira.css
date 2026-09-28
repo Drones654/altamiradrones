@@ -294,3 +294,17 @@ figcaption .procedencia { display: block; color: var(--rojo); font-size: 11px; l
   .portada::after { background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,.1) 42%, rgba(0,0,0,.7) 72%, rgba(0,0,0,.8) 100%); }
   .portada__img { object-position: 40% 100%; }
 }
+
+/* ---------- ejemplos de trabajos ---------- */
+.proyecto + .proyecto { margin-top: clamp(80px, 10vw, 140px); padding-top: clamp(56px, 7vw, 96px); border-top: 1px solid var(--linea); }
+.proyecto--inv { grid-template-columns: 5fr 7fr; }
+.proyecto--inv > :first-child { order: 2; }
+.proyecto--solo { grid-template-columns: 1fr; }
+.proyecto--solo > div { max-width: 760px; }
+.h-ejemplo { font-weight: 600; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.2; margin: 14px 0 6px; }
+.ejemplos__cierre { display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: center; justify-content: space-between; margin-top: clamp(80px, 10vw, 140px); padding: 40px 0; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+@media (max-width: 940px) {
+  .proyecto--inv { grid-template-columns: 1fr; }
+  .proyecto--inv > :first-child { order: 0; }
+}
+.proyecto__fotos--uno { grid-template-columns: 1fr; }
