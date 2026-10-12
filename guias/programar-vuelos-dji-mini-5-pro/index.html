@@ -91,7 +91,7 @@
         <p>La solución es calcular la altura de cada waypoint con un modelo digital del terreno:</p>
         <p><code>altura del waypoint = AGL deseado + (cota del terreno en el punto − cota del punto de despegue)</code></p>
         <ul>
-          <li>Usamos el <strong>MDT de 5 m del IGN</strong>. Se descarga del Centro de Descargas del CNIG o se pide por WCS a <code>servicios.idee.es/wcs-inspire/mdt</code> (cobertura <code>Elevacion4258_5</code>, formato <code>ArcGrid</code>). Lo comparamos con el modelo de nuestro propio vuelo y salió una correlación de 0,995.</li>
+          <li>Usamos el <strong>MDT de 5 m del IGN</strong>. Se descarga del Centro de Descargas del CNIG o se pide por WCS a <code>servicios.idee.es/wcs-inspire/mdt</code> (cobertura <code>Elevacion4258_5</code>, formato <code>ArcGrid</code>). Al compararlo con el modelo de nuestros propios vuelos, coincide muy bien.</li>
           <li><strong>Si es posible, despega desde el punto más bajo</strong> de la zona. Así ningún waypoint queda por debajo de la altura nominal.</li>
           <li>Si despegas desde un punto alto, algunas alturas pueden salir negativas o casi nulas. DJI Fly no acepta menos de 2 m: o subes todo el perfil o aceptas que en la zona baja el AGL sea algo mayor.</li>
           <li><strong>Usa el mismo punto de despegue para todas las misiones del día.</strong> Todas comparten la misma referencia de altura y se procesan juntas sin sorpresas.</li>
@@ -107,7 +107,7 @@
               <tr><td>Espacio de nombres</td><td><code>http://www.uav.com/wpmz/1.0.2</code> (no el de <code>www.dji.com</code> que aparece en la documentación)</td></tr>
               <tr><td>Modelo de dron</td><td>La app escribe <code>droneEnumValue</code> 68 con el Mini 5 Pro conectado</td></tr>
               <tr><td>Disparo de fotos</td><td><strong>Un waypoint por foto</strong>, con un <code>actionGroup</code> en modo <code>parallel</code> y disparador <code>reachPoint</code>. El disparo por distancia (<code>multipleDistance</code>) no lo hemos podido verificar.</td></tr>
-              <tr><td>Número de waypoints</td><td>Hemos cargado misiones de 374 waypoints sin problema</td></tr>
+              <tr><td>Número de waypoints</td><td>Hemos cargado misiones de varios centenares de waypoints sin problema</td></tr>
               <tr><td>Ángulo de la cámara</td><td>Hay que ponerlo en tres sitios: una acción <code>gimbalRotate</code> (ángulo absoluto) en el primer waypoint, una <code>gimbalEvenlyRotate</code> hasta el último y el <code>waypointGimbalPitchAngle</code> de cada punto</td></tr>
               <tr><td>Giros</td><td><code>toPointAndPassWithContinuityCurvature</code> en los puntos intermedios y <code>toPointAndStopWithContinuityCurvature</code> en el último</td></tr>
               <tr><td>Pérdida de señal</td><td><code>exitOnRCLost = executeLostAction</code> con <code>executeRCLostAction = goBack</code></td></tr>
@@ -140,6 +140,21 @@
           <li>Comprueba en los EXIF el ángulo real de la cámara. En vuelos nadir (−90°) lo hemos visto estable. En oblicuas, el gimbal no siempre mantuvo el ángulo programado, así que conviene revisarlas foto a foto.</li>
           <li>Si las misiones se solapan en planta, sepáralas por bloques de tiempo y no por posición.</li>
         </ul>
+
+        <h2>Hazlo con Claude u otra IA</h2>
+        <p>No hace falta saber programar para seguir esta guía. Un asistente de IA como <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>, ChatGPT o Gemini puede escribir por ti el script que genera la misión. Nosotros trabajamos con Claude, y con <strong>Claude Code</strong>, que se ejecuta en tu ordenador, la IA puede además leer tus ficheros, ejecutar el script y comprobar el resultado. Así lo planteamos:</p>
+        <ol>
+          <li><strong>Dale el contexto.</strong> Pásale el GeoJSON de la parcela, el modelo de dron y los parámetros que buscas (GSD o altura, solapes, ángulo de cámara). Pásale también esta guía o los datos de la cámara del paso 2.</li>
+          <li><strong>Dale una plantilla real.</strong> Crea una ruta corta en DJI Fly, cópiala del mando y pásale ese KMZ. Es la mejor forma de que la IA escriba exactamente el dialecto que entiende tu versión de la app, en lugar de fiarse de la documentación.</li>
+          <li><strong>Pídele el script, no solo el fichero.</strong> Un script en Python (con <code>shapely</code> y <code>pyproj</code>) que lea el polígono, genere las pasadas, descargue el MDT del IGN, calcule la altura de cada waypoint y escriba el KMZ. Así lo reutilizas en cada parcela cambiando dos parámetros.</li>
+          <li><strong>Pídele que lo compruebe.</strong> Que cuente waypoints y fotos, que calcule el tiempo de vuelo y que te muestre la ruta y las alturas sobre el mapa (en QGIS o Google Earth) antes de llevarla al mando.</li>
+          <li><strong>Con Claude Code, también la carga.</strong> Con el RC 2 conectado por USB, puede copiar el KMZ en la carpeta de la ruta que creaste y verificar que el fichero ha llegado entero.</li>
+        </ol>
+        <p>Un ejemplo de petición para empezar:</p>
+        <div class="aviso">
+          <p>«Tengo un DJI Mini 5 Pro con el mando RC 2 y DJI Fly. Te paso el polígono de mi parcela en GeoJSON y una ruta de ejemplo exportada desde la app. Escríbeme un script en Python que genere una misión fotogramétrica en ese mismo formato KMZ: 60 m sobre el terreno, solape frontal del 85 % y lateral del 80 %, cámara a −90°, un waypoint por foto y la altura de cada punto corregida con el MDT de 5 m del IGN respecto a este punto de despegue. Antes de generar el fichero, enséñame cuántas fotos saldrán y cuánto durará el vuelo.»</p>
+        </div>
+        <p><strong>La IA acelera el trabajo, pero no sustituye tu revisión.</strong> Puede equivocarse en una unidad, en un signo o en una etiqueta del formato. Comprueba siempre la ruta y las alturas sobre el mapa y haz un primer vuelo de prueba corto antes de volar la misión completa.</p>
 
         <h2>¿Merece la pena?</h2>
         <p>Para levantamientos de parcelas agrícolas, viñedos o pequeñas obras, sí. Un dron compacto con buena cámara y una misión bien planificada da ortofotos y modelos 3D de resolución centimétrica con poca logística. Para grandes superficies, cuando se exige precisión topográfica con puntos de control o RTK, o cuando se necesitan sensores específicos, un equipo profesional sigue siendo la opción adecuada.</p>
