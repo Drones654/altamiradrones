@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>How to plan photogrammetry flights with the DJI Mini 5 Pro | Altamira Drones</title>
+  <meta name="description" content="A practical guide to planning your own photogrammetry missions (KMZ) and loading them into DJI Fly on the DJI Mini 5 Pro and RC 2: GSD and overlap, terrain following and loading the mission onto the controller.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://altamiradrones.com/guides/planning-flights-dji-mini-5-pro/">
+  <link rel="alternate" hreflang="en" href="https://altamiradrones.com/guides/planning-flights-dji-mini-5-pro/">
+  <link rel="alternate" hreflang="es" href="https://altamiradrones.com/guias/programar-vuelos-dji-mini-5-pro/">
+  <link rel="alternate" hreflang="x-default" href="https://altamiradrones.com/guides/planning-flights-dji-mini-5-pro/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to plan photogrammetry flights with the DJI Mini 5 Pro">
+  <meta property="og:description" content="Custom missions in DJI Fly even though the app cannot import them: GSD and overlap, terrain following with a digital terrain model and loading the KMZ onto the RC 2.">
+  <meta property="og:url" content="https://altamiradrones.com/guides/planning-flights-dji-mini-5-pro/">
+  <meta property="og:image" content="https://altamiradrones.com/img/web/vinedo-vigor.jpg">
+  <link rel="icon" type="image/png" href="/img/web/toro.png">
+  <meta name="theme-color" content="#8C2418">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/altamira.css">
+</head>
+<body>
+
+  <header class="nav clara" id="nav">
+    <div class="contenedor nav__fila">
+      <a class="marca" href="/" aria-label="Altamira Drones">
+        <img class="toro-rojo" src="/img/web/toro.png" alt="" width="65" height="30">
+        <span>ALTAMIRA DRONES</span>
+      </a>
+      <button class="nav__boton" id="nav-boton" aria-label="Menu" aria-expanded="false" aria-controls="nav-enlaces">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__enlaces" id="nav-enlaces"><a href="/#services">Services</a><a href="/#agriculture">Agriculture</a><a href="/#examples">Examples</a><a href="/#news">News</a><a href="/#about">About</a><a href="/#contact">Contact</a><span class="idioma"><strong>EN</strong> / <a href="/guias/programar-vuelos-dji-mini-5-pro/" hreflang="es">ES</a></span></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="cabecera">
+      <div class="contenedor">
+        <p class="etiqueta">Guides · 12 October 2026</p>
+        <h1>How to plan photogrammetry flights with the DJI Mini 5 Pro</h1>
+        <p class="lead" style="max-width:36em">The DJI Fly app has no mapping mode and no way to import missions. Even so, the Mini 5 Pro can fly a photogrammetry grid planned on your computer. Here is how we do it and what to watch out for.</p>
+      </div>
+    </section>
+
+    <div class="contenedor articulo">
+      <div class="prosa" style="padding:0">
+
+        <h2 style="margin-top:0;border-top:0;padding-top:0">The problem</h2>
+        <p>The Mini 5 Pro has a 1" sensor and 50 MP photos, so a compact drone can deliver centimetre-level resolution. But DJI Fly, the consumer app it runs on, only lets you draw waypoint routes by hand on the map:</p>
+        <ul>
+          <li>it does not generate parallel flight lines with overlap (the photogrammetry “grid”),</li>
+          <li>it has no button to import a KMZ planned outside the app,</li>
+          <li>it does not follow the terrain: each waypoint’s height is relative to the take-off point.</li>
+        </ul>
+        <p>The workaround is to plan the mission elsewhere, write it in DJI’s waypoint format (WPML) and put it on the controller in place of a route created in the app. It works, but it is not an official method.</p>
+
+        <div class="aviso">
+          <p><strong>Before you start.</strong> DJI neither offers nor supports this procedure, and a DJI Fly update could break it. Back up the routes already saved on your controller and try a short mission in an open area first. An automated flight does not change your obligations: keep the drone in sight, check airspace restrictions for the area (in Spain, on <a href="https://drones.enaire.es/" target="_blank" rel="noopener">ENAIRE Drones</a>) and fly within your operational category. If the mission goes wrong, the pilot is responsible.</p>
+        </div>
+
+        <h2>1. Define the area</h2>
+        <p>Draw the plot outline in QGIS (or any other GIS) and export it as GeoJSON in geographic coordinates (EPSG:4326). To compute the grid, reproject to UTM (in mainland Spain usually zone 30: EPSG:25830 or 32630) and work in metres. We shrink the outline slightly so as not to fly over the neighbouring plot; if you need sharp edges in the orthophoto, do the opposite and extend it by a few metres.</p>
+
+        <h2>2. Work out height, overlap and speed</h2>
+        <p>Using the real camera data (measured from the EXIF of our photos and from the processing calibration), the Mini 5 Pro’s geometry at 50 MP is:</p>
+        <ul>
+          <li>Image: 8192 × 6144 px. Physical focal length: 8.67 mm (23 mm equivalent).</li>
+          <li><strong>GSD (cm/px) ≈ 0.0185 × height (m)</strong>.</li>
+          <li><strong>Ground footprint ≈ 1.51·H × 1.14·H</strong>, with the long side perpendicular to the flight direction.</li>
+          <li>Minimum interval between photos at 50 MP: about 2 s. So speed should not exceed half the distance between photos: <code>v ≤ spacing / 2</code>.</li>
+        </ul>
+        <p>With 85 % front overlap and 80 % side overlap, which is what we use in vineyards:</p>
+        <div class="tabla-scroll">
+          <table>
+            <thead><tr><th>Height</th><th>GSD</th><th>Footprint</th><th>Line spacing</th><th>Photo spacing</th><th>Max. speed</th></tr></thead>
+            <tbody>
+              <tr><td>30 m</td><td>0.55 cm</td><td>45 × 34 m</td><td>9.1 m</td><td>5.1 m</td><td>2.5 m/s</td></tr>
+              <tr><td>60 m</td><td>1.11 cm</td><td>91 × 68 m</td><td>18.2 m</td><td>10.2 m</td><td>5.1 m/s</td></tr>
+              <tr><td>90 m</td><td>1.66 cm</td><td>136 × 102 m</td><td>27.3 m</td><td>15.3 m</td><td>7.6 m/s</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="aviso">
+          <p><strong>Check the photo size in DJI Fly before take-off.</strong> If the app is set to 12 MP (4096 × 3072), the real GSD will be double what you planned. It happened to us: the mission flew perfectly, but at half the resolution.</p>
+        </div>
+        <p>If you can, size the mission to fit on one battery. If not, split it into several missions and fly them all from the same take-off point (see the next step).</p>
+
+        <h2>3. Compensate for relief: the drone does not follow the terrain</h2>
+        <p>In DJI Fly each waypoint’s height is relative to the take-off point, not to the ground beneath it. On a sloping plot, a “60 m” mission flies higher over the low ground and lower over the high ground, so GSD and overlap change, and so does the clearance over obstacles.</p>
+        <p>The fix is to calculate each waypoint’s height from a digital terrain model:</p>
+        <p><code>waypoint height = desired AGL + (ground elevation at the point − take-off elevation)</code></p>
+        <ul>
+          <li>In Spain we use the <strong>IGN 5 m digital terrain model</strong>. You can download it from the CNIG download centre or request it by WCS from <code>servicios.idee.es/wcs-inspire/mdt</code> (coverage <code>Elevacion4258_5</code>, format <code>ArcGrid</code>). It matches the models from our own flights very closely. Elsewhere, use your national mapping agency’s terrain model.</li>
+          <li><strong>If possible, take off from the lowest point</strong> of the area. That way no waypoint ends up below the nominal height.</li>
+          <li>If you take off from high ground, some heights may come out negative or close to zero. DJI Fly will not accept less than 2 m: either raise the whole profile or accept a somewhat higher AGL over the low ground.</li>
+          <li><strong>Use the same take-off point for all of the day’s missions.</strong> They will share the same height reference and process together without surprises.</li>
+          <li>If there are trees, power lines or buildings, check obstacles against a surface model (for example, national or regional LiDAR) and leave a margin.</li>
+        </ul>
+
+        <h2>4. Write the mission in the format DJI Fly understands</h2>
+        <p>A DJI mission is a KMZ (a ZIP file) containing a <code>template.kml</code> and a <code>waylines.wpml</code>. DJI publishes the WPML specification, but DJI Fly does not follow it to the letter. When the app imports a mission it rewrites it, and that rewritten file shows what it really understands. This is what we have confirmed with the Mini 5 Pro:</p>
+        <div class="tabla-scroll">
+          <table>
+            <thead><tr><th>Item</th><th>What works</th></tr></thead>
+            <tbody>
+              <tr><td>Namespace</td><td><code>http://www.uav.com/wpmz/1.0.2</code> (not the <code>www.dji.com</code> one shown in the documentation)</td></tr>
+              <tr><td>Drone model</td><td>The app writes <code>droneEnumValue</code> 68 with the Mini 5 Pro connected</td></tr>
+              <tr><td>Photo trigger</td><td><strong>One waypoint per photo</strong>, with an <code>actionGroup</code> in <code>parallel</code> mode and a <code>reachPoint</code> trigger. We have not been able to verify distance-based triggering (<code>multipleDistance</code>).</td></tr>
+              <tr><td>Number of waypoints</td><td>We have loaded missions with several hundred waypoints without problems</td></tr>
+              <tr><td>Camera angle</td><td>It must be set in three places: a <code>gimbalRotate</code> action (absolute angle) on the first waypoint, a <code>gimbalEvenlyRotate</code> running to the last one, and the <code>waypointGimbalPitchAngle</code> of every point</td></tr>
+              <tr><td>Turns</td><td><code>toPointAndPassWithContinuityCurvature</code> on intermediate points and <code>toPointAndStopWithContinuityCurvature</code> on the last one</td></tr>
+              <tr><td>Signal loss</td><td><code>exitOnRCLost = executeLostAction</code> with <code>executeRCLostAction = goBack</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Our advice: create a short route in the app itself, copy it to your computer and use it as a template. That way you start from the exact dialect of your DJI Fly version.</p>
+
+        <h2>5. Load the mission onto the controller (DJI RC 2)</h2>
+        <p>DJI Fly keeps its list of routes in an internal database that cannot be reached from a computer. That is why copying a KMZ into a new folder is not enough: the app will not list it. What does work is replacing the file of a route the app created itself:</p>
+        <ol>
+          <li>In DJI Fly, create any waypoint route (2 or 3 points), save it and <strong>give it a recognisable name</strong>. If you are loading several missions, create one route per mission, in a known order.</li>
+          <li>Connect the RC 2 to your computer by USB in file transfer mode (MTP).</li>
+          <li>Go to <code>Internal shared storage/Android/data/dji.go.v5/files/waypoint/</code>. Each route has a folder named with an identifier (UUID) containing a <code>&lt;UUID&gt;.kmz</code> file. The most recent one is the route you just created.</li>
+          <li>Keep a copy of the original KMZ, delete it from the controller and copy your mission in its place, renamed exactly as <code>&lt;UUID&gt;.kmz</code>.</li>
+          <li>Wait for the copy to finish and check that the size matches your file. Over MTP, an interrupted copy can be left at 0 bytes.</li>
+          <li>Close DJI Fly completely and reopen it. The route will appear with the name you gave it and your flight path.</li>
+        </ol>
+
+        <h2>6. In the field</h2>
+        <ul>
+          <li>Before take-off, check the photo size, format and camera angle.</li>
+          <li><strong>Set the RC 2 to automatic time.</strong> If the controller’s clock is off, photos get wrong dates, which makes sorting and processing them harder.</li>
+          <li>Fly the day’s missions from the same point and keep the drone in sight for the whole route.</li>
+        </ul>
+
+        <h2>7. Check before processing</h2>
+        <ul>
+          <li>Compare the number of photos with the number of planned points. If they match, the mission ran to completion.</li>
+          <li>Check the real camera angle in the EXIF. On nadir flights (−90°) we have found it stable. On oblique flights the gimbal did not always hold the programmed angle, so review those photo by photo.</li>
+          <li>If missions overlap on the ground, separate them by time blocks rather than by position.</li>
+        </ul>
+
+        <h2>Do it with Claude or another AI</h2>
+        <p>You do not need to know how to code to follow this guide. An AI assistant such as <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>, ChatGPT or Gemini can write the script that generates the mission for you. We work with Claude, and with <strong>Claude Code</strong>, which runs on your computer, the AI can also read your files, run the script and check the result. This is how we approach it:</p>
+        <ol>
+          <li><strong>Give it context.</strong> Pass it the plot’s GeoJSON, the drone model and the parameters you want (GSD or height, overlap, camera angle). Pass it this guide too, or the camera data from step 2.</li>
+          <li><strong>Give it a real template.</strong> Create a short route in DJI Fly, copy it from the controller and give it that KMZ. It is the best way for the AI to write exactly the dialect your version of the app understands, instead of relying on the documentation.</li>
+          <li><strong>Ask for the script, not just the file.</strong> A Python script (using <code>shapely</code> and <code>pyproj</code>) that reads the polygon, generates the flight lines, downloads the terrain model, calculates each waypoint’s height and writes the KMZ. You can then reuse it for every plot by changing a couple of parameters.</li>
+          <li><strong>Ask it to check the result.</strong> Have it count waypoints and photos, estimate the flight time and show you the route and heights on a map (in QGIS or Google Earth) before you take it to the controller.</li>
+          <li><strong>With Claude Code, it can load it too.</strong> With the RC 2 connected by USB, it can copy the KMZ into the folder of the route you created and verify that the file arrived intact.</li>
+        </ol>
+        <p>An example request to get started:</p>
+        <div class="aviso">
+          <p>“I have a DJI Mini 5 Pro with the RC 2 controller and DJI Fly. Here is my plot’s polygon as GeoJSON and a sample route exported from the app. Write me a Python script that generates a photogrammetry mission in that same KMZ format: 60 m above ground, 85 % front and 80 % side overlap, camera at −90°, one waypoint per photo, and each point’s height corrected with the IGN 5 m terrain model relative to this take-off point. Before writing the file, tell me how many photos it will take and how long the flight will last.”</p>
+        </div>
+        <p><strong>AI speeds up the work, but it does not replace your review.</strong> It can get a unit, a sign or a format tag wrong. Always check the route and heights on a map and do a short test flight before flying the full mission.</p>
+
+        <h2>Is it worth it?</h2>
+        <p>For surveys of farm plots, vineyards or small construction sites, yes. A compact drone with a good camera and a well-planned mission delivers centimetre-resolution orthophotos and 3D models with very little logistics. For large areas, when survey-grade accuracy with ground control points or RTK is required, or when specific sensors are needed, professional equipment is still the right choice.</p>
+      </div>
+
+      <aside>
+        <dl class="ficha" style="margin-top:0">
+          <div><dt>Drone</dt><dd>DJI Mini 5 Pro</dd></div>
+          <div><dt>Controller</dt><dd>DJI RC 2 with DJI Fly</dd></div>
+          <div><dt>Planning</dt><dd>QGIS + our own Python script</dd></div>
+          <div><dt>Terrain</dt><dd>IGN 5 m digital terrain model</dd></div>
+          <div><dt>Tested</dt><dd>Nadir and oblique missions over vineyards, September 2026</dd></div>
+        </dl>
+        <div style="background:var(--fondo-alt);padding:32px;margin-top:36px">
+          <h2 style="font-weight:600;font-size:20px;margin-bottom:8px">Need the maps, not the flight?</h2>
+          <p style="font-size:15px">We plan, fly and process: orthophotos, 3D models, vigour and prescription maps. Tell us about your plot or project.</p>
+          <a class="boton" href="/#contact">Get in touch →</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__fila">
+        <a class="marca" href="/"><img src="/img/web/toro.png" alt="" width="65" height="30"><span>ALTAMIRA DRONES</span></a>
+        <nav><a href="/#services">Services</a><a href="/#agriculture">Agriculture</a><a href="/#examples">Examples</a><a href="/#news">News</a><a href="/#about">About</a><a href="/#contact">Contact</a><a href="/privacidad/">Privacy</a><a href="/terminos/">Legal notice</a></nav>
+      </div>
+      <p class="pie__legal">© 2026 Altamira Drones, S.L. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const boton = document.getElementById('nav-boton');
+    const menu = abrir => { nav.classList.toggle('abierta', abrir); boton.setAttribute('aria-expanded', abrir); };
+    boton.addEventListener('click', () => menu(!nav.classList.contains('abierta')));
+  </script>
+</body>
+</html>
