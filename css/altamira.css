@@ -263,6 +263,11 @@ figcaption .procedencia { display: block; color: var(--rojo); font-size: 11px; l
 .prosa th { text-align: left; font-weight: 600; color: var(--tinta); padding: 10px 12px 10px 0; border-bottom: 1px solid var(--linea); }
 .prosa td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--linea); vertical-align: top; }
 .tabla-scroll { overflow-x: auto; }
+.prosa code { font-family: Consolas, "Courier New", monospace; font-size: .9em; background: var(--fondo-alt); padding: 1px 5px; overflow-wrap: anywhere; }
+.prosa ol { padding-left: 1.4em; margin: 0 0 1em; }
+.prosa ol li { margin-bottom: 8px; }
+.aviso { border-left: 2px solid var(--rojo); background: var(--fondo-alt); padding: 18px 22px; margin: 22px 0; }
+.aviso p:last-child { margin-bottom: 0; }
 
 /* ---------- aparición suave ---------- */
 .aparece { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
