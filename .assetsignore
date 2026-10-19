@@ -1,0 +1,27 @@
+# Lo que NO se publica en altamiradrones.com (Cloudflare Workers, assets = raíz del repo).
+# Misma sintaxis que .gitignore. Solo deben salir las páginas, css/, img/ y los
+# ficheros que necesitan los buscadores (robots.txt, sitemap.xml, verificación de Google).
+.git
+.github
+.claude
+.wrangler
+.gitignore
+.assetsignore
+CLAUDE.md
+README*
+*.md
+*.py
+*.pyc
+*.docx
+*.xlsx
+*.jsonc
+*.toml
+Flies/
+business_plan/
+market_study/
+tmp/
+debug_*
+validation_*
+approval_*
+img/torre-san-leonardo.glb
+img/torre-san-leonardo-report.pdf

@@ -269,6 +269,19 @@ figcaption .procedencia { display: block; color: var(--rojo); font-size: 11px; l
 .aviso { border-left: 2px solid var(--rojo); background: var(--fondo-alt); padding: 18px 22px; margin: 22px 0; }
 .aviso p:last-child { margin-bottom: 0; }
 
+/* Páginas de servicio: pasos numerados y preguntas frecuentes */
+.pasos { list-style: none; margin: 0; padding: 0; counter-reset: paso; }
+.pasos li { counter-increment: paso; position: relative; padding: 18px 0 18px 64px; border-top: 1px solid var(--linea); }
+.pasos li:last-child { border-bottom: 1px solid var(--linea); }
+.pasos li::before { content: counter(paso, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-weight: 300; font-size: 26px; line-height: 1.2; color: var(--rojo); }
+.faq details { border-top: 1px solid var(--linea); padding: 18px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--linea); }
+.faq summary { cursor: pointer; list-style: none; position: relative; padding-right: 36px; font-weight: 600; color: var(--tinta); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 0; top: -4px; font-weight: 300; font-size: 26px; color: var(--rojo); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 12px 0 0; }
+
 /* ---------- aparición suave ---------- */
 .aparece { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
 .aparece.visible { opacity: 1; transform: none; }

@@ -1,0 +1,14 @@
+# Cabeceras de seguridad y caché (Cloudflare Workers static assets / Pages)
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000
+  Content-Security-Policy: frame-ancestors 'self'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests
+
+/img/*
+  Cache-Control: public, max-age=604800
+
+/css/*
+  Cache-Control: public, max-age=86400
